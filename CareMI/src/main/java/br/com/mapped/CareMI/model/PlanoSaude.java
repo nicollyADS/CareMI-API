@@ -25,7 +25,7 @@ public class PlanoSaude {
     private String fantasia;
     private int cnpj;
     private String contato;
-    private int telefone;
+    private String telefone;
     private LocalDate dataCadastro;
     private int ativo;
 }

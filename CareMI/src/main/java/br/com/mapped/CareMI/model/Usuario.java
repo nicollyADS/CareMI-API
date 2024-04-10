@@ -30,6 +30,8 @@ public class Usuario {
     private EstadoCivil estadoCivil;
     private String profissao;
     private int ativo;
+
+    //fk
     private Long idEndereco;
     private Long idLogradouro;
     private Long idBairro;

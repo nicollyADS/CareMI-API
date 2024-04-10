@@ -18,7 +18,7 @@ public class Logradouro {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "logradouro")
     @SequenceGenerator(name = "logradouro", sequenceName = "seq_mi_logradouro", allocationSize = 1)
     @Column(name="cdLogradouro")
-    private int id;
+    private Long id;
     private String nome;
     private Long idBairro;
     private Long idCidade;
