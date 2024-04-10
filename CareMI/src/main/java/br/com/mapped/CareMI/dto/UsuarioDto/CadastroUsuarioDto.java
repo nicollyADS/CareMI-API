@@ -4,5 +4,5 @@ import br.com.mapped.CareMI.model.EstadoCivil;
 
 import java.time.LocalDate;
 
-public record CadastroUsuarioDto(String nome, LocalDate dataNascimento, int cpf, int rg, String nacionalidade, LocalDate dataCadastro, EstadoCivil estadoCivil, String profissao, int ativo) {
+public record CadastroUsuarioDto(String nome, LocalDate dataNascimento, String cpf, String rg, String nacionalidade, LocalDate dataCadastro, EstadoCivil estadoCivil, String profissao, Integer ativo) {
 }

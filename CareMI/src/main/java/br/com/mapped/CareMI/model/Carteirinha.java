@@ -1,5 +1,7 @@
 package br.com.mapped.CareMI.model;
 
+import br.com.mapped.CareMI.dto.CarteirinhaDto.AtualizacaoCarteirinhaDto;
+import br.com.mapped.CareMI.dto.CarteirinhaDto.CadastroCarteirinhaDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,9 +25,36 @@ public class Carteirinha {
     private Long id;
     private String nome;
     private String planoSaude;
-    private int cns;
+    private Integer cns;
     private String empresa;
     private String carencia;
     private String acomodacao;
     private LocalDate dataNascimento;
+
+    public Carteirinha(CadastroCarteirinhaDto carteirinhaDto) {
+        nome = carteirinhaDto.nome();
+        planoSaude = carteirinhaDto.planoSaude();
+        cns = carteirinhaDto.cns();
+        empresa = carteirinhaDto.empresa();
+        carencia = carteirinhaDto.carencia();
+        acomodacao = carteirinhaDto.acomodacao() ;
+        dataNascimento = carteirinhaDto.dataNascimento();
+    }
+
+    public void atualizarInformacoesCarteirinha(AtualizacaoCarteirinhaDto dto) {
+        if (dto.nome() != null)
+            nome = dto.nome();
+        if (dto.planoSaude() != null)
+            planoSaude = dto.planoSaude();
+        if (dto.cns() != null)
+            cns = dto.cns();
+        if (dto.empresa() != null)
+            empresa = dto.empresa();
+        if (dto.carencia() != null)
+            carencia = dto.carencia();
+        if (dto.acomodacao() != null)
+            acomodacao = dto.acomodacao();
+        if (dto.dataNascimento() != null)
+            dataNascimento = dto.dataNascimento();
+    }
 }

@@ -1,5 +1,9 @@
 package br.com.mapped.CareMI.model;
 
+import br.com.mapped.CareMI.dto.LoginDto.AtualizacaoLoginDto;
+import br.com.mapped.CareMI.dto.LoginDto.CadastroLoginDto;
+import br.com.mapped.CareMI.dto.MedicoDto.AtualizacaoMedicoDto;
+import br.com.mapped.CareMI.dto.MedicoDto.CadastroMedicoDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,5 +28,26 @@ public class Medico {
     private String crm;
     private String email;
     private String celular;
+
+    public Medico(CadastroMedicoDto medicoDto) {
+        nome = medicoDto.nome();
+        especializacao = medicoDto.especializacao();
+        crm = medicoDto.crm();
+        email = medicoDto.email();
+        celular = medicoDto.celular();
+    }
+
+    public void atualizarInformacoesMedico(AtualizacaoMedicoDto dto) {
+        if (dto.nome() != null)
+            nome = dto.nome();
+        if (dto.especializacao() != null)
+            especializacao = dto.especializacao();
+        if (dto.crm() != null)
+            crm = dto.crm();
+        if (dto.email() != null)
+            email = dto.email();
+        if (dto.celular() != null)
+            celular = dto.celular();
+    }
 
 }

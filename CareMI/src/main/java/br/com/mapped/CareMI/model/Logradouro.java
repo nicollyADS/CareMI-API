@@ -1,5 +1,9 @@
 package br.com.mapped.CareMI.model;
 
+import br.com.mapped.CareMI.dto.LoginDto.AtualizacaoLoginDto;
+import br.com.mapped.CareMI.dto.LoginDto.CadastroLoginDto;
+import br.com.mapped.CareMI.dto.LogradouroDto.AtualizacaoLogradouroDto;
+import br.com.mapped.CareMI.dto.LogradouroDto.CadastroLogradouroDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +24,17 @@ public class Logradouro {
     @Column(name="cdLogradouro")
     private Long id;
     private String nome;
+
+    //fk
     private Long idBairro;
     private Long idCidade;
+
+    public Logradouro(CadastroLogradouroDto logradouroDto) {
+        nome = logradouroDto.nome();
+    }
+
+    public void atualizarInformacoesLogradouro(AtualizacaoLogradouroDto dto) {
+        if (dto.nome() != null)
+            nome = dto.nome();
+    }
 }

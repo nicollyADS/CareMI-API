@@ -1,4 +1,4 @@
 package br.com.mapped.CareMI.dto.LoginDto;
 
-public record CadastroLoginDto(String cpf, String senha, int ativo) {
+public record CadastroLoginDto(String cpf, String senha, Integer ativo) {
 }

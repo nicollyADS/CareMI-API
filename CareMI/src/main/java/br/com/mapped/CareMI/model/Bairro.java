@@ -1,5 +1,9 @@
 package br.com.mapped.CareMI.model;
 
+import br.com.mapped.CareMI.dto.AtendimentoDto.AtualizacaoAtendimentoDto;
+import br.com.mapped.CareMI.dto.AtendimentoDto.CadastroAtendimentoDto;
+import br.com.mapped.CareMI.dto.BairroDto.AtualizacaoBairroDto;
+import br.com.mapped.CareMI.dto.BairroDto.CadastroBairroDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,5 +30,21 @@ public class Bairro {
 
     //fk
     private Long idCidade;
+
+    public Bairro(CadastroBairroDto bairroDto) {
+        nome = bairroDto.nome();
+        zona = bairroDto.zona();
+        cep= bairroDto.cep();
+    }
+
+    public void atualizarInformacoesBairro(AtualizacaoBairroDto dto) {
+        if (dto.nome() != null)
+            nome = dto.nome();
+        if (dto.zona() != null)
+            zona = dto.zona();
+        if (dto.cep() != null)
+            cep = dto.cep();
+
+    }
 
 }

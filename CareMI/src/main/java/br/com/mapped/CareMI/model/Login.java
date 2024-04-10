@@ -1,5 +1,9 @@
 package br.com.mapped.CareMI.model;
 
+import br.com.mapped.CareMI.dto.EnderecoHospitalDto.AtualizacaoEnderecoHospitalDto;
+import br.com.mapped.CareMI.dto.EnderecoHospitalDto.CadastroEnderecoHospitalDto;
+import br.com.mapped.CareMI.dto.LoginDto.AtualizacaoLoginDto;
+import br.com.mapped.CareMI.dto.LoginDto.CadastroLoginDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,10 +25,26 @@ public class Login {
     private Long id;
     private String cpf;
     private String senha;
-    private int ativo;
+    private Integer ativo;
 
     //fk
     private Long idUsuario;
     private Long idContato;
     private Long idTipoContato;
+
+    public Login(CadastroLoginDto loginDto) {
+        cpf = loginDto.cpf();
+        senha = loginDto.senha();
+        ativo = loginDto.ativo();
+    }
+
+    public void atualizarInformacoesLogin(AtualizacaoLoginDto dto) {
+        if (dto.cpf() != null)
+            cpf = dto.cpf();
+        if (dto.senha() != null)
+            senha = dto.senha();
+        if (dto.ativo() != null)
+            ativo = dto.ativo();
+    }
 }
+

@@ -1,5 +1,7 @@
 package br.com.mapped.CareMI.model;
 
+import br.com.mapped.CareMI.dto.UsuarioDto.AtualizacaoUsuarioDto;
+import br.com.mapped.CareMI.dto.UsuarioDto.CadastroUsuarioDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,13 +25,13 @@ public class Usuario {
     private Long id;
     private String nome;
     private LocalDate dataNascimento;
-    private int cpf;
-    private int rg;
+    private String cpf;
+    private String rg;
     private String nacionalidade;
     private LocalDate dataCadastro;
     private EstadoCivil estadoCivil;
     private String profissao;
-    private int ativo;
+    private Integer ativo;
 
     //fk
     private Long idEndereco;
@@ -37,4 +39,37 @@ public class Usuario {
     private Long idBairro;
     private Long idCidade;
 
+
+    public Usuario(CadastroUsuarioDto usuarioDto) {
+        nome = usuarioDto.nome();
+        dataNascimento = usuarioDto.dataNascimento();
+        cpf = usuarioDto.cpf();
+        rg = usuarioDto.rg();
+        nacionalidade = usuarioDto.nacionalidade();
+        dataCadastro = usuarioDto.dataCadastro();
+        estadoCivil = usuarioDto.estadoCivil();
+        profissao = usuarioDto.profissao();
+        ativo = usuarioDto.ativo();
+    }
+
+    public void atualizarInformacoesUsuario(AtualizacaoUsuarioDto dto) {
+        if (dto.nome() != null)
+            nome = dto.nome();
+        if (dto.dataNascimento() != null)
+            dataNascimento = dto.dataNascimento();
+        if (dto.cpf() != null)
+            cpf = dto.cpf();
+        if (dto.rg() != null)
+            rg = dto.rg();
+        if (dto.nacionalidade() != null)
+            nacionalidade = dto.nacionalidade();
+        if (dto.dataCadastro() != null)
+            dataCadastro = dto.dataCadastro();
+        if (dto.estadoCivil() != null)
+            estadoCivil = dto.estadoCivil();
+        if (dto.profissao() != null)
+            profissao = dto.profissao();
+        if (dto.ativo() != null)
+            ativo = dto.ativo();
+    }
 }

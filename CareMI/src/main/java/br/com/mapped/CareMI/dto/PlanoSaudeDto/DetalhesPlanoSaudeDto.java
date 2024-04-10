@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 import java.time.LocalDate;
 
-public record DetalhesPlanoSaudeDto(Long id, String razaoSocial, String fantasia, int cnpj, String contato, String telefone, LocalDate dataCadastro, int ativo) {
+public record DetalhesPlanoSaudeDto(Long id, String razaoSocial, String fantasia, Integer cnpj, String contato, String telefone, LocalDate dataCadastro, Integer ativo) {
 
     public DetalhesPlanoSaudeDto(PlanoSaude planoSaude) {
         this(planoSaude.getId(), planoSaude.getRazaoSocial(), planoSaude.getFantasia(), planoSaude.getCnpj(), planoSaude.getContato(), planoSaude.getTelefone(), planoSaude.getDataCadastro(), planoSaude.getAtivo());

@@ -1,5 +1,9 @@
 package br.com.mapped.CareMI.model;
 
+import br.com.mapped.CareMI.dto.MedicoDto.AtualizacaoMedicoDto;
+import br.com.mapped.CareMI.dto.MedicoDto.CadastroMedicoDto;
+import br.com.mapped.CareMI.dto.PacienteDto.AtualizacaoPacienteDto;
+import br.com.mapped.CareMI.dto.PacienteDto.CadastroPacienteDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,8 +24,8 @@ public class Paciente {
     @Column(name="cdPaciente")
     private Long id;
     private String nome;
-    private int peso;
-    private int altura;
+    private Integer peso;
+    private Integer altura;
     private String grupoSanguineo;
     private SexoBiologico sexoBiologico;
 
@@ -30,5 +34,26 @@ public class Paciente {
     private Long idContato;
     private Long idTipoContato;
     private Long idCarteirinha;
+
+    public Paciente(CadastroPacienteDto pacienteDto) {
+        nome = pacienteDto.nome();
+        peso = pacienteDto.peso();
+        altura = pacienteDto.altura();
+        grupoSanguineo = pacienteDto.grupoSanguineo();
+        sexoBiologico = pacienteDto.sexoBiologico();
+    }
+
+    public void atualizarInformacoesPaciente(AtualizacaoPacienteDto dto) {
+        if (dto.nome() != null)
+            nome = dto.nome();
+        if (dto.peso() != null)
+            peso = dto.peso();
+        if (dto.altura() != null)
+            altura = dto.altura();
+        if (dto.grupoSanguineo() != null)
+            grupoSanguineo = dto.grupoSanguineo();
+        if (dto.sexoBiologico() != null)
+            sexoBiologico = dto.sexoBiologico();
+    }
 
 }

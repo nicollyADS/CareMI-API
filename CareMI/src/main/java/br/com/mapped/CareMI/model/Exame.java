@@ -1,5 +1,9 @@
 package br.com.mapped.CareMI.model;
 
+import br.com.mapped.CareMI.dto.EnderecoHospitalDto.AtualizacaoEnderecoHospitalDto;
+import br.com.mapped.CareMI.dto.EnderecoHospitalDto.CadastroEnderecoHospitalDto;
+import br.com.mapped.CareMI.dto.ExameDto.AtualizacaoExameDto;
+import br.com.mapped.CareMI.dto.ExameDto.CadastroExameDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,4 +31,16 @@ public class Exame {
     //fk
     private Long idAtendimento;
     private Long idPaciente;
+
+    public Exame(CadastroExameDto exameDto) {
+        data = exameDto.data();
+        descricao = exameDto.descricao();
+    }
+
+    public void atualizarInformacoesExame(AtualizacaoExameDto dto) {
+        if (dto.data() != null)
+            data = dto.data();
+        if (dto.descricao() != null)
+            descricao = dto.descricao();
+    }
 }

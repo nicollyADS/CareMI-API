@@ -1,5 +1,9 @@
 package br.com.mapped.CareMI.model;
 
+import br.com.mapped.CareMI.dto.EnderecoHospitalDto.AtualizacaoEnderecoHospitalDto;
+import br.com.mapped.CareMI.dto.EnderecoHospitalDto.CadastroEnderecoHospitalDto;
+import br.com.mapped.CareMI.dto.EstadoDto.AtualizacaoEstadoDto;
+import br.com.mapped.CareMI.dto.EstadoDto.CadastroEstadoDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,4 +25,17 @@ public class Estado {
     private Long id;
     private String nome;
     private String sigla;
+
+    public Estado(CadastroEstadoDto estadolDto) {
+        nome = estadolDto.nome();
+        sigla = estadolDto.sigla();
+    }
+
+    public void atualizarInformacoesEstado(AtualizacaoEstadoDto dto) {
+        if (dto.nome() != null)
+            nome = dto.nome();
+        if (dto.sigla() != null)
+            sigla = dto.sigla();
+    }
 }
+

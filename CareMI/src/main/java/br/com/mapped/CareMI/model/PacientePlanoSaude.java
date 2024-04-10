@@ -1,5 +1,9 @@
 package br.com.mapped.CareMI.model;
 
+import br.com.mapped.CareMI.dto.PacienteDto.AtualizacaoPacienteDto;
+import br.com.mapped.CareMI.dto.PacienteDto.CadastroPacienteDto;
+import br.com.mapped.CareMI.dto.PacientePlanoSaudeDto.AtualizacaoPacientePlanoSaudeDto;
+import br.com.mapped.CareMI.dto.PacientePlanoSaudeDto.CadastroPacientePlanoSaudeDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,12 +25,28 @@ public class PacientePlanoSaude {
     @SequenceGenerator(name = "pacientePlanoSaude", sequenceName = "seq_mi_pac_pl_saude", allocationSize = 1)
     @Column(name="cdPlanoPaciente")
     private Long id;
-    private int carteira;
+    private Integer carteira;
     private LocalDate dataInicio;
     private LocalDate dataFim;
 
     //fk
     private Long idPaciente;
     private Long idPlanoSaude;
+
+    public PacientePlanoSaude(CadastroPacientePlanoSaudeDto pacientePlanoSaudeDto) {
+        carteira = pacientePlanoSaudeDto.carteira();
+        dataInicio = pacientePlanoSaudeDto.dataInicio();
+        dataFim = pacientePlanoSaudeDto.dataFim();
+    }
+
+    public void atualizarInformacoesPacientePlanoSaude(AtualizacaoPacientePlanoSaudeDto dto) {
+        if (dto.carteira() != null)
+            carteira = dto.carteira();
+        if (dto.dataInicio() != null)
+            dataInicio = dto.dataInicio();
+        if (dto.dataFim() != null)
+            dataFim = dto.dataFim();
+    }
+
 
 }

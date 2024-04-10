@@ -1,5 +1,9 @@
 package br.com.mapped.CareMI.model;
 
+import br.com.mapped.CareMI.dto.CarteirinhaDto.AtualizacaoCarteirinhaDto;
+import br.com.mapped.CareMI.dto.CarteirinhaDto.CadastroCarteirinhaDto;
+import br.com.mapped.CareMI.dto.CidadeDto.AtualizacaoCidadeDto;
+import br.com.mapped.CareMI.dto.CidadeDto.CadastroCidadeDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,4 +27,13 @@ public class Cidade {
 
     //fk
     private Long idEstado;
+
+    public Cidade(CadastroCidadeDto cidadeDto) {
+        nome = cidadeDto.nome();
+    }
+
+    public void atualizarInformacoesCidade(AtualizacaoCidadeDto dto) {
+        if (dto.nome() != null)
+            nome = dto.nome();
+    }
 }
