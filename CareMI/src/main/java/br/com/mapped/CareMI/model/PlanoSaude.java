@@ -1,7 +1,5 @@
 package br.com.mapped.CareMI.model;
 
-import br.com.mapped.CareMI.dto.PacientePlanoSaudeDto.AtualizacaoPacientePlanoSaudeDto;
-import br.com.mapped.CareMI.dto.PacientePlanoSaudeDto.CadastroPacientePlanoSaudeDto;
 import br.com.mapped.CareMI.dto.PlanoSaudeDto.AtualizacaoPlanoSaudeDto;
 import br.com.mapped.CareMI.dto.PlanoSaudeDto.CadastroPlanoSaudeDto;
 import jakarta.persistence.*;

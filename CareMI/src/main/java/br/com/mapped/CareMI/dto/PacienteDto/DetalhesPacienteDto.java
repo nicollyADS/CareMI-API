@@ -1,5 +1,4 @@
 package br.com.mapped.CareMI.dto.PacienteDto;
-
 import br.com.mapped.CareMI.model.Paciente;
 import br.com.mapped.CareMI.model.SexoBiologico;
 

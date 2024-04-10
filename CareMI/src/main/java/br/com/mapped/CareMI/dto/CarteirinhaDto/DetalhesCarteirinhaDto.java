@@ -1,5 +1,4 @@
 package br.com.mapped.CareMI.dto.CarteirinhaDto;
-
 import br.com.mapped.CareMI.model.Carteirinha;
 
 import java.time.LocalDate;

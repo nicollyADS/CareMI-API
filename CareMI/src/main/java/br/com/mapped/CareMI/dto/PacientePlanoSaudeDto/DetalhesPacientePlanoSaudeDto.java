@@ -1,5 +1,4 @@
 package br.com.mapped.CareMI.dto.PacientePlanoSaudeDto;
-
 import br.com.mapped.CareMI.model.PacientePlanoSaude;
 
 import java.time.LocalDate;

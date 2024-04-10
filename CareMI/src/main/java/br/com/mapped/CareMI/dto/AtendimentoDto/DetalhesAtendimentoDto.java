@@ -1,5 +1,4 @@
 package br.com.mapped.CareMI.dto.AtendimentoDto;
-
 import br.com.mapped.CareMI.model.Atendimento;
 
 import java.time.LocalDate;

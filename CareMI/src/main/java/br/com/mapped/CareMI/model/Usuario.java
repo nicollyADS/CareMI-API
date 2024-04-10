@@ -1,5 +1,4 @@
 package br.com.mapped.CareMI.model;
-
 import br.com.mapped.CareMI.dto.UsuarioDto.AtualizacaoUsuarioDto;
 import br.com.mapped.CareMI.dto.UsuarioDto.CadastroUsuarioDto;
 import jakarta.persistence.*;

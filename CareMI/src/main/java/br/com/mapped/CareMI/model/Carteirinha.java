@@ -1,5 +1,4 @@
 package br.com.mapped.CareMI.model;
-
 import br.com.mapped.CareMI.dto.CarteirinhaDto.AtualizacaoCarteirinhaDto;
 import br.com.mapped.CareMI.dto.CarteirinhaDto.CadastroCarteirinhaDto;
 import jakarta.persistence.*;

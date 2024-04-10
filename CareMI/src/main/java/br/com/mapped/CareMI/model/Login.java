@@ -1,7 +1,5 @@
 package br.com.mapped.CareMI.model;
 
-import br.com.mapped.CareMI.dto.EnderecoHospitalDto.AtualizacaoEnderecoHospitalDto;
-import br.com.mapped.CareMI.dto.EnderecoHospitalDto.CadastroEnderecoHospitalDto;
 import br.com.mapped.CareMI.dto.LoginDto.AtualizacaoLoginDto;
 import br.com.mapped.CareMI.dto.LoginDto.CadastroLoginDto;
 import jakarta.persistence.*;

@@ -1,7 +1,5 @@
 package br.com.mapped.CareMI.model;
 
-import br.com.mapped.CareMI.dto.LoginDto.AtualizacaoLoginDto;
-import br.com.mapped.CareMI.dto.LoginDto.CadastroLoginDto;
 import br.com.mapped.CareMI.dto.LogradouroDto.AtualizacaoLogradouroDto;
 import br.com.mapped.CareMI.dto.LogradouroDto.CadastroLogradouroDto;
 import jakarta.persistence.*;
