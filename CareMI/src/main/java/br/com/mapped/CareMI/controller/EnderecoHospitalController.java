@@ -1,5 +1,4 @@
 package br.com.mapped.CareMI.controller;
-
 import br.com.mapped.CareMI.dto.EnderecoHospitalDto.AtualizacaoEnderecoHospitalDto;
 import br.com.mapped.CareMI.dto.EnderecoHospitalDto.CadastroEnderecoHospitalDto;
 import br.com.mapped.CareMI.dto.EnderecoHospitalDto.DetalhesEnderecoHospitalDto;

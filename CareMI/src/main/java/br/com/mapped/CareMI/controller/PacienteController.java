@@ -1,5 +1,4 @@
 package br.com.mapped.CareMI.controller;
-
 import br.com.mapped.CareMI.dto.PacienteDto.AtualizacaoPacienteDto;
 import br.com.mapped.CareMI.dto.PacienteDto.CadastroPacienteDto;
 import br.com.mapped.CareMI.dto.PacienteDto.DetalhesPacienteDto;
@@ -12,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
-
 import java.util.List;
 
 @RestController

@@ -1,5 +1,4 @@
 package br.com.mapped.CareMI.controller;
-
 import br.com.mapped.CareMI.dto.CarteirinhaDto.AtualizacaoCarteirinhaDto;
 import br.com.mapped.CareMI.dto.CarteirinhaDto.CadastroCarteirinhaDto;
 import br.com.mapped.CareMI.dto.CarteirinhaDto.DetalhesCarteirinhaDto;

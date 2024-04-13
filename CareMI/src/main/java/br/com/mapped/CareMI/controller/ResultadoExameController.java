@@ -1,5 +1,4 @@
 package br.com.mapped.CareMI.controller;
-
 import br.com.mapped.CareMI.dto.ResultadoExameDto.AtualizacaoResultadoExameDto;
 import br.com.mapped.CareMI.dto.ResultadoExameDto.CadastroResultadoExameDto;
 import br.com.mapped.CareMI.dto.ResultadoExameDto.DetalhesResultadoExameDto;

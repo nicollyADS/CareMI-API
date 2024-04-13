@@ -1,5 +1,4 @@
 package br.com.mapped.CareMI.controller;
-
 import br.com.mapped.CareMI.dto.PlanoSaudeDto.AtualizacaoPlanoSaudeDto;
 import br.com.mapped.CareMI.dto.PlanoSaudeDto.CadastroPlanoSaudeDto;
 import br.com.mapped.CareMI.dto.PlanoSaudeDto.DetalhesPlanoSaudeDto;

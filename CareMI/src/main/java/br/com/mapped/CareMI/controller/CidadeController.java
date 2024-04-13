@@ -1,5 +1,4 @@
 package br.com.mapped.CareMI.controller;
-
 import br.com.mapped.CareMI.dto.CidadeDto.AtualizacaoCidadeDto;
 import br.com.mapped.CareMI.dto.CidadeDto.CadastroCidadeDto;
 import br.com.mapped.CareMI.dto.CidadeDto.DetalhesCidadeDto;

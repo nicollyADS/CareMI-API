@@ -1,5 +1,4 @@
 package br.com.mapped.CareMI.controller;
-
 import br.com.mapped.CareMI.dto.AtendimentoDto.AtualizacaoAtendimentoDto;
 import br.com.mapped.CareMI.dto.AtendimentoDto.CadastroAtendimentoDto;
 import br.com.mapped.CareMI.model.Atendimento;
