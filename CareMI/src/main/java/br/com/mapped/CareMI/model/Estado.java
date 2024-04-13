@@ -19,9 +19,13 @@ public class Estado {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "estado")
     @SequenceGenerator(name = "estado", sequenceName = "seq_mi_estado", allocationSize = 1)
-    @Column(name="cdEstado")
+    @Column(name="cdEstado", length = 6)
     private Long id;
+
+    @Column(name="nmEstado", length = 30, nullable = false)
     private String nome;
+
+    @Column(name="sgEstado", length = 3, nullable = false)
     private String sigla;
 
     public Estado(CadastroEstadoDto estadolDto) {

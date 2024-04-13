@@ -19,16 +19,18 @@ public class Login {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "login")
     @SequenceGenerator(name = "login", sequenceName = "seq_mi_login", allocationSize = 1)
-    @Column(name="cdLogin")
+    @Column(name="cdLogin", length = 9)
     private Long id;
+
+    @Column(name="nrCpf", length = 15, nullable = false)
     private String cpf;
+
+    @Column(name="dsSenha", length = 100, nullable = false)
     private String senha;
+
+    @Column(name="fgAtivo", length = 1, nullable = false)
     private Integer ativo;
 
-    //fk
-    private Long idUsuario;
-    private Long idContato;
-    private Long idTipoContato;
 
     public Login(CadastroLoginDto loginDto) {
         cpf = loginDto.cpf();

@@ -21,14 +21,15 @@ public class Exame {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "exame")
     @SequenceGenerator(name = "exame", sequenceName = "seq_mi_exame", allocationSize = 1)
-    @Column(name="cdExame")
+    @Column(name="cdExame", length = 9)
     private Long id;
+
+    @Column(name="dtExame", nullable = false)
     private LocalDate data;
+
+    @Column(name="dsExame", length = 500, nullable = false)
     private String descricao;
 
-    //fk
-    private Long idAtendimento;
-    private Long idPaciente;
 
     public Exame(CadastroExameDto exameDto) {
         data = exameDto.data();

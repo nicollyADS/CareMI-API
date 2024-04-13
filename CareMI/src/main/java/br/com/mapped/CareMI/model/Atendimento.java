@@ -21,19 +21,30 @@ public class Atendimento {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "atendimento")
     @SequenceGenerator(name = "atendimento", sequenceName = "seq_mi_atendimento", allocationSize = 1)
-    @Column(name="cdAtendimento")
+    @Column(name="cdAtendimento", length = 9)
     private Long id;
+
+    @Column(name="dsDescricao", length = 500, nullable = false)
     private String descricao;
+
+    @Column(name="qtDias", length = 2, nullable = false)
     private Integer dias;
+
+    @Column(name="dsHabito", length = 100, nullable = false)
     private String habito;
+
+    @Column(name="dsTempoSono", length = 10, nullable = false)
     private String tempoSono;
+
+    @Column(name="dsHereditario", length = 50, nullable = false)
     private String hereditario;
+
+    @Column(name="dtEnvio", nullable = false)
     private LocalDate dataEnvio;
+
+    @Column(name="fgAtivo", length = 1)
     private Integer ativo;
 
-    //fk
-    private Long idPaciente;
-    private Long idMedico;
 
     public Atendimento(CadastroAtendimentoDto atendimentoDto) {
         descricao = atendimentoDto.descricao();

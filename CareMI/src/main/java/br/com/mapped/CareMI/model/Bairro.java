@@ -20,14 +20,18 @@ public class Bairro {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bairro")
     @SequenceGenerator(name = "bairro", sequenceName = "seq_mi_bairro", allocationSize = 1)
-    @Column(name="cdBairro")
+    @Column(name="cdBairro", length = 7)
     private Long id;
+
+    @Column(name="nmBairro", length = 100, nullable = false)
     private String nome;
+
+    @Column(name="nmZonaBairro", length = 100, nullable = false)
     private String zona;
+
+    @Column(name="nrCep", length = 10, nullable = false)
     private String cep;
 
-    //fk
-    private Long idCidade;
 
     public Bairro(CadastroBairroDto bairroDto) {
         nome = bairroDto.nome();

@@ -21,15 +21,18 @@ public class PacientePlanoSaude {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pacientePlanoSaude")
     @SequenceGenerator(name = "pacientePlanoSaude", sequenceName = "seq_mi_pac_pl_saude", allocationSize = 1)
-    @Column(name="cdPlanoPaciente")
+    @Column(name="cdPlanoPaciente", length = 9)
     private Long id;
+
+    @Column(name="nrCarteira", length = 15, nullable = false)
     private Integer carteira;
+
+    @Column(name="dtInicio", nullable = false)
     private LocalDate dataInicio;
+
+    @Column(name="dtFim", nullable = false)
     private LocalDate dataFim;
 
-    //fk
-    private Long idPaciente;
-    private Long idPlanoSaude;
 
     public PacientePlanoSaude(CadastroPacientePlanoSaudeDto pacientePlanoSaudeDto) {
         carteira = pacientePlanoSaudeDto.carteira();

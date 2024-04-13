@@ -19,16 +19,17 @@ public class EnderecoPaciente {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "enderecoPaciente")
     @SequenceGenerator(name = "enderecoPaciente", sequenceName = "seq_mi_endereco_paciente", allocationSize = 1)
-    @Column(name="cdEndereco")
+    @Column(name="cdEndereco", length = 9)
     private Long id;
-    private Integer logradouro;
-    private String pontoReferencia;
-    private String complemento;
 
-    //fk
-    private Long idLogradouro;
-    private Long idBairro;
-    private Long idCidade;
+    @Column(name="nrLogradouro", length = 7, nullable = false)
+    private Integer logradouro;
+
+    @Column(name="dsPontoReferencia", length = 100, nullable = false)
+    private String pontoReferencia;
+
+    @Column(name="dsComplemento", length = 100, nullable = false)
+    private String complemento;
 
 
     public EnderecoPaciente(CadastroEnderecoPacienteDto enderecoPacienteDto) {

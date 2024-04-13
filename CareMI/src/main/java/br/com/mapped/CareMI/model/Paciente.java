@@ -19,19 +19,25 @@ public class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "paciente")
     @SequenceGenerator(name = "paciente", sequenceName = "seq_mi_paciente", allocationSize = 1)
-    @Column(name="cdPaciente")
+    @Column(name="cdPaciente", length = 9)
     private Long id;
+
+    @Column(name="nmPaciente", length = 100, nullable = false)
     private String nome;
+
+    @Column(name="nrPeso", length = 6, nullable = false)
     private Integer peso;
+
+    @Column(name="nrAltura", length = 4, nullable = false)
     private Integer altura;
+
+    @Column(name="nmGrupoSanguineo", length = 6, nullable = false)
     private String grupoSanguineo;
+
+    @Column(name="flSexoBiologico", length = 15, nullable = false)
+    @Enumerated(EnumType.STRING)
     private SexoBiologico sexoBiologico;
 
-    //fk
-    private Long idUsuario;
-    private Long idContato;
-    private Long idTipoContato;
-    private Long idCarteirinha;
 
     public Paciente(CadastroPacienteDto pacienteDto) {
         nome = pacienteDto.nome();
