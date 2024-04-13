@@ -15,7 +15,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.List;
 
 @RestController
-@RequestMapping("planos")
+@RequestMapping("planos-saude")
 public class PlanoSaudeController {
     @Autowired
     private PlanoSaudeRepository planoSaudeRepository;
@@ -42,7 +42,7 @@ public class PlanoSaudeController {
                                                   UriComponentsBuilder uriBuilder){
         var planoSaude = new PlanoSaude(planoSaudeDto);
         planoSaudeRepository.save(planoSaude);
-        var uri = uriBuilder.path("planos/{id}").buildAndExpand(planoSaude.getId()).toUri();
+        var uri = uriBuilder.path("planos-saude/{id}").buildAndExpand(planoSaude.getId()).toUri();
         return ResponseEntity.created(uri).body(new DetalhesPlanoSaudeDto(planoSaude));
     }
 
