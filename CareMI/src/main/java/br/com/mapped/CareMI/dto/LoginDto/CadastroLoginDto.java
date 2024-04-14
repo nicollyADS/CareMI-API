@@ -4,7 +4,7 @@ import jakarta.validation.constraints.*;
 
 public record CadastroLoginDto(
         @NotBlank(message = "O CPF não pode estar em branco")
-        @Size(min = 11, max = 11, message = "O CPF deve ter 11 caracteres")
+        @Size(min = 11, max = 15, message = "O CPF deve ter no máximo 15 caracteres")
         String cpf,
 
         @NotBlank(message = "A senha não pode estar em branco")

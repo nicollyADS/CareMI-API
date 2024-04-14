@@ -14,7 +14,7 @@ public record CadastroCarteirinhaDto(
 
         @NotNull(message = "O CNS não pode estar em branco")
         @Positive(message = "O número do CNS deve ser um número positivo")
-        Integer cns,
+        Long cns,
 
         @NotBlank(message = "O nome da empresa não pode estar em branco")
         @Size(max = 100, message = "O nome da empresa deve ter no máximo 100 caracteres")

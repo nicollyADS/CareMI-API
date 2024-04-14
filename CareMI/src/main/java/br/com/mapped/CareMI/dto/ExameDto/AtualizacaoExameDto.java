@@ -1,15 +1,12 @@
 package br.com.mapped.CareMI.dto.ExameDto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.PastOrPresent;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 
 public record AtualizacaoExameDto(
         @NotNull(message = "A data não pode estar em branco")
-        @PastOrPresent(message = "A data deve ser atual ou estar no passado")
+        @FutureOrPresent(message = "A data deve ser atual ou estar no futuro")
         LocalDate data,
 
         @NotBlank(message = "A descrição não pode estar em branco")

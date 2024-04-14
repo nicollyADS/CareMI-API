@@ -22,8 +22,7 @@ public record CadastroPacienteDto(
         @Size(max = 6, message = "O grupo sanguíneo deve ter no máximo 6 caracteres")
         String grupoSanguineo,
 
-        @NotBlank(message = "O sexo biológico não pode estar em branco")
-        @Size(max = 15, message = "O sexo biológico deve ter no máximo 15 caracteres")
+        @NotNull(message = "O sexo biológico não pode estar em branco")
         SexoBiologico sexoBiologico
 ) {
 }

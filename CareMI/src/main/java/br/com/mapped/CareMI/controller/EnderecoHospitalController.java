@@ -15,7 +15,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.List;
 
 @RestController
-@RequestMapping("enderecos/hospitais")
+@RequestMapping("enderecos-hospitais")
 public class EnderecoHospitalController {
     @Autowired
     private EnderecoHospitalRepository enderecoHospitalRepository;
@@ -42,7 +42,7 @@ public class EnderecoHospitalController {
                                                        UriComponentsBuilder uriBuilder){
         var enderecoHospital = new EnderecoHospital(enderecoHospitalDto);
         enderecoHospitalRepository.save(enderecoHospital);
-        var uri = uriBuilder.path("enderecos/hospitais/{id}").buildAndExpand(enderecoHospital.getId()).toUri();
+        var uri = uriBuilder.path("enderecos-hospitais/{id}").buildAndExpand(enderecoHospital.getId()).toUri();
         return ResponseEntity.created(uri).body(new DetalhesEnderecoHospitalDto(enderecoHospital));
     }
 

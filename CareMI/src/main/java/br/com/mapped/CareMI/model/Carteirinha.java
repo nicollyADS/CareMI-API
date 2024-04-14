@@ -30,7 +30,7 @@ public class Carteirinha {
     private String planoSaude;
 
     @Column(name="nrCns", length = 15, nullable = false)
-    private Integer cns;
+    private Long cns;
 
     @Column(name="nmEmpresa", length = 100, nullable = false)
     private String empresa;

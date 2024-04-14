@@ -14,7 +14,7 @@ public record AtualizacaoPlanoSaudeDto(
 
         @NotNull(message = "O CNPJ não pode ser nulo")
         @Positive(message = "O número do cnpj deve ser um número positivo")
-        Integer cnpj,
+        Long cnpj,
 
         @NotBlank(message = "O contato não pode estar em branco")
         @Size(max = 100, message = "O contato deve ter no máximo 100 caracteres")

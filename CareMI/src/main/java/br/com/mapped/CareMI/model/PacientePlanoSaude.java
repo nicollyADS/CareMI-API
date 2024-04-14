@@ -25,7 +25,7 @@ public class PacientePlanoSaude {
     private Long id;
 
     @Column(name="nrCarteira", length = 15, nullable = false)
-    private Integer carteira;
+    private Long carteira;
 
     @Column(name="dtInicio", nullable = false)
     private LocalDate dataInicio;

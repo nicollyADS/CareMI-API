@@ -31,7 +31,7 @@ public class PlanoSaude {
     private String fantasia;
 
     @Column(name="nrCnpj", length = 14, nullable = false)
-    private Integer cnpj;
+    private Long cnpj;
 
     @Column(name="nmContato", length = 100, nullable = false)
     private String contato;

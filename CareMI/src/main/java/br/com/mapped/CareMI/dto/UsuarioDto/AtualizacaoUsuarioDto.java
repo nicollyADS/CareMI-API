@@ -13,7 +13,7 @@ public record AtualizacaoUsuarioDto(
         LocalDate dataNascimento,
 
         @NotBlank(message = "O CPF não pode estar em branco")
-        @Size(max = 15, message = "O CPF deve ter no máximo 15 caracteres")
+        @Size(min = 11, max = 15, message = "O CPF deve ter no máximo 15 caracteres")
         String cpf,
 
         @NotBlank(message = "O RG não pode estar em branco")
@@ -27,10 +27,8 @@ public record AtualizacaoUsuarioDto(
         @NotNull(message = "A data de cadastro não pode ser nula")
         LocalDate dataCadastro,
 
-        @NotNull(message = "O estado civil não pode ser nulo")
         EstadoCivil estadoCivil,
 
-        @NotBlank(message = "A profissão não pode estar em branco")
         @Size(max = 100, message = "A profissão deve ter no máximo 100 caracteres")
         String profissao,
 
