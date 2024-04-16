@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "61c33e6b-8679-47d3-97fb-677eaf42a864",
+		"name": "PacienteCareMI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29771037"
+	},
+	"item": [
+		{
+			"name": "criando paciente 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Gabriel Oliveira\",\r\n  \"peso\": 70,\r\n  \"altura\": 175,\r\n  \"grupoSanguineo\": \"A+\",\r\n  \"sexoBiologico\": \"MASCULINO\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/pacientes",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pacientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "criando paciente 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Maria Ferreira\",\r\n  \"peso\": 55,\r\n  \"altura\": 160,\r\n  \"grupoSanguineo\": \"O-\",\r\n  \"sexoBiologico\": \"FEMININO\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/pacientes",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pacientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listando pacientes ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/pacientes",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pacientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listando pacientes por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/pacientes/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pacientes",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listando pacientes por ordenacao",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/pacientes?sort=peso",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pacientes"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "peso"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "atualizando pacientes",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Maria Ferreira\",\r\n  \"peso\": 57,\r\n  \"altura\": 160,\r\n  \"grupoSanguineo\": \"O-\",\r\n  \"sexoBiologico\": \"FEMININO\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/pacientes/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pacientes",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletando pacientes",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/pacientes/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pacientes",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

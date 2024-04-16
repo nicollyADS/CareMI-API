@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "e6500fae-dfc7-4a7b-b177-bfcae9a99148",
+		"name": "ResultadoExameCareMI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29771037"
+	},
+	"item": [
+		{
+			"name": "criando resultado 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"descricao\": \"Exame de sangue completo\",\r\n  \"observacao\": \"Paciente em bom estado de saúde\",\r\n  \"resultado\": 95,\r\n  \"globulosVermelhos\": 4500000,\r\n  \"globulosBrancos\": 7000,\r\n  \"plaquetas\": 250000,\r\n  \"homoglobinaGlicada\": 5,\r\n  \"creatina\": 0.9,\r\n  \"colesterolTotal\": 180,\r\n  \"colesterolHDL\": 50,\r\n  \"colesterolLDL\": 120,\r\n  \"teglicerides\": 150,\r\n  \"hormonioTrioestimulanteTSH\": 2\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/resultados",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"resultados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "criando resultado 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"descricao\": \"Hemograma Completo\",\r\n  \"observacao\": \"Resultados dentro dos limites normais\",\r\n  \"resultado\": 5.0,\r\n  \"globulosVermelhos\": 4800000,\r\n  \"globulosBrancos\": 7000,\r\n  \"plaquetas\": 220000,\r\n  \"homoglobinaGlicada\": 5.3,\r\n  \"creatina\": 0.9,\r\n  \"colesterolTotal\": 190,\r\n  \"colesterolHDL\": 55,\r\n  \"colesterolLDL\": 125,\r\n  \"teglicerides\": 140,\r\n  \"hormonioTrioestimulanteTSH\": 2.3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/resultados",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"resultados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listando resultados",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/resultados",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"resultados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listando resultado por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/resultados/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"resultados",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listando resultados por ordenacao",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/resultados?sort=descricao",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"resultados"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "descricao"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "atualizando resultado",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"descricao\": \"Hemograma Completo\",\r\n  \"observacao\": \"Resultados dentro dos limites normais\",\r\n  \"resultado\": 5.0,\r\n  \"globulosVermelhos\": 4800000,\r\n  \"globulosBrancos\": 7000,\r\n  \"plaquetas\": 220000,\r\n  \"homoglobinaGlicada\": 5.3,\r\n  \"creatina\": 0.9,\r\n  \"colesterolTotal\": 190,\r\n  \"colesterolHDL\": 56,\r\n  \"colesterolLDL\": 125,\r\n  \"teglicerides\": 140,\r\n  \"hormonioTrioestimulanteTSH\": 2.3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/resultados/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"resultados",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletando resultado",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/resultados/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"resultados",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
