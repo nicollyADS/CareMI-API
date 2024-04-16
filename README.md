@@ -51,7 +51,7 @@ A seguir estão os diagramas do projeto:
 
 ### Vídeo de Apresentação
 
-Assista ao vídeo de apresentação da proposta tecnológica, público-alvo e problemas que a aplicação se propõe a solucionar [aqui](link_para_o_vídeo).
+Assista ao vídeo de apresentação da proposta tecnológica, público-alvo e problemas que a aplicação se propõe a solucionar [aqui](https://www.youtube.com/watch?v=Inv55aaUWZo).
 
 
 #### Listagem de Endpoints - Documentação da API
