@@ -23,7 +23,7 @@ public class EnderecoHospital {
     private Long id;
 
     @Column(name="nrLogradouro", length = 7, nullable = false)
-    private Integer logradouro;
+    private Integer numLogradouro;
 
     @Column(name="dsPontoReferencia", length = 100, nullable = false)
     private String pontoReferencia;
@@ -33,17 +33,21 @@ public class EnderecoHospital {
 
     //relacionamentos
     //enderecoHospital logradouro - muitos pra um
+    @ManyToOne
+    @JoinColumn(name="cdLogradouro", nullable = false)
+    private Logradouro logradouro;
+
 
 
     public EnderecoHospital(CadastroEnderecoHospitalDto enderecoHospitalDto) {
-        logradouro = enderecoHospitalDto.logradouro();
+        numLogradouro = enderecoHospitalDto.numLogradouro();
         pontoReferencia = enderecoHospitalDto.pontoReferencia();
         complemento = enderecoHospitalDto.complemento();
     }
 
     public void atualizarInformacoesEnderecoHospital(AtualizacaoEnderecoHospitalDto dto) {
-        if (dto.logradouro() != null)
-            logradouro = dto.logradouro();
+        if (dto.numLogradouro() != null)
+            numLogradouro = dto.numLogradouro();
         if (dto.pontoReferencia() != null)
             pontoReferencia = dto.pontoReferencia();
         if (dto.complemento() != null)

@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -40,12 +42,21 @@ public class Paciente {
 
     //relacionamentos
     //paciente usuario - um pra UM
+    @OneToOne
+    @JoinColumn(name = "cdUsuario", nullable = false)
+    private Usuario usuario;
 
     //paciente atendimento - um pra muitos
+    @OneToMany(mappedBy = "paciente")
+    private List<Atendimento> atendimentos;
 
     //paciente carteirinha - UM pra um
+    @OneToOne(mappedBy = "paciente", cascade = CascadeType.ALL)
+    private Carteirinha carteirinha;
 
     //paciente pacientePlanoSaude - um pra muitos
+    @OneToMany(mappedBy = "paciente")
+    private List<PacientePlanoSaude> pacientePlanoSaudes;
 
 
     public Paciente(CadastroPacienteDto pacienteDto) {

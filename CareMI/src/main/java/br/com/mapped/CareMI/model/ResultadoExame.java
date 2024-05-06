@@ -63,6 +63,9 @@ public class ResultadoExame {
 
     //relacionamentos
     //resultadoExame exame - um pra UM
+    @OneToOne
+    @JoinColumn(name = "cdExame", nullable = false)
+    private Exame exame;
 
     public ResultadoExame(CadastroResultadoExameDto resultadoExameDto) {
         descricao = resultadoExameDto.descricao();

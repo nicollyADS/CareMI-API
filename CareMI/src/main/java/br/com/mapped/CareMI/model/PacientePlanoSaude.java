@@ -35,8 +35,14 @@ public class PacientePlanoSaude {
 
     //relacionamentos
     //pacientePlanoSaude Paciente - muitos pra um
+    @ManyToOne
+    @JoinColumn(name="cdPaciente", nullable = false)
+    private Paciente paciente;
 
     //pacientePlanoSaude planoSaude - muitos pra um
+    @ManyToOne
+    @JoinColumn(name="cdPlanoSaude", nullable = false)
+    private PlanoSaude planoSaude;
 
     public PacientePlanoSaude(CadastroPacientePlanoSaudeDto pacientePlanoSaudeDto) {
         carteira = pacientePlanoSaudeDto.carteira();

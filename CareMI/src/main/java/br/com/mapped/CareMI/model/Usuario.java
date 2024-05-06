@@ -53,10 +53,17 @@ public class Usuario {
 
     //relacionamentos
     //usuario enderecoPaciente - um pra UM
+    @OneToOne
+    @JoinColumn(name = "cdEndereco", nullable = false)
+    private EnderecoPaciente enderecoPaciente;
 
     //usuario login - UM pra um
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private Login login;
 
     //usuario paciente - UM pra um
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private Paciente paciente;
 
     public Usuario(CadastroUsuarioDto usuarioDto) {
         nome = usuarioDto.nome();

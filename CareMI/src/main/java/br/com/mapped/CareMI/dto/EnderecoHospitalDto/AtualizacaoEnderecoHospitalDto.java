@@ -8,7 +8,7 @@ import jakarta.validation.constraints.Size;
 public record AtualizacaoEnderecoHospitalDto(
         @NotNull(message = "O logradouro não pode estar em branco")
         @Positive(message = "O logradouro deve ser um número positivo")
-        Integer logradouro,
+        Integer numLogradouro,
 
         @NotBlank(message = "O ponto de referência não pode estar em branco")
         @Size(max = 100, message = "O ponto de referência deve ter no máximo 100 caracteres")

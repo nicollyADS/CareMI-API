@@ -33,6 +33,9 @@ public class Login {
 
     //relacionamentos
     //login usuario - um pra UM
+    @OneToOne
+    @JoinColumn(name = "cdUsuario", nullable = false)
+    private Usuario usuario;
 
     public Login(CadastroLoginDto loginDto) {
         cpf = loginDto.cpf();

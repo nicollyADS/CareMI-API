@@ -9,6 +9,7 @@ import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -47,6 +48,8 @@ public class PlanoSaude {
 
     //relacionamentos
     //planoSaude pacientePlanoSaude - um pra muitos
+    @OneToMany(mappedBy = "planoSaude")
+    private List<PacientePlanoSaude> pacientePlanoSaudes;
 
     public PlanoSaude(CadastroPlanoSaudeDto planoSaudeDto) {
         razaoSocial = planoSaudeDto.razaoSocial();

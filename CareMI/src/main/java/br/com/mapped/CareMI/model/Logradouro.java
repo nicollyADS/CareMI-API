@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -27,10 +29,17 @@ public class Logradouro {
 
     //relacionamentos
     //logradouro bairro - muitos pra um
+    @ManyToOne
+    @JoinColumn(name="cdBairro", nullable = false)
+    private Bairro bairro;
 
     //logradouro enderecoPaciente - um pra muitos
+    @OneToMany(mappedBy = "logradouro")
+    private List<EnderecoPaciente> enderecoPacientes;
 
     //logradouro enderecoHospital - um pra muitos
+    @OneToMany(mappedBy = "logradouro")
+    private List<EnderecoHospital> enderecoHospitals;
 
     public Logradouro(CadastroLogradouroDto logradouroDto) {
         nome = logradouroDto.nome();

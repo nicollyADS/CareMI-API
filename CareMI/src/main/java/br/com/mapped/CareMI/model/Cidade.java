@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -28,8 +30,13 @@ public class Cidade {
     //relacionamentos
 
     //cidade bairro - um pra muitos
+    @OneToMany(mappedBy = "cidade")
+    private List<Bairro> bairros;
 
     //cidade estado - muitos pra um
+    @ManyToOne
+    @JoinColumn(name="cdEstado", nullable = false)
+    private Estado estado;
 
 
     public Cidade(CadastroCidadeDto cidadeDto) {

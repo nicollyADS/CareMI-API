@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -31,7 +33,8 @@ public class Estado {
     //relacionamentos
 
     //estado cidade - um pra muitos
-
+    @OneToMany(mappedBy = "estado")
+    private List<Cidade> cidades;
 
 
     public Estado(CadastroEstadoDto estadolDto) {

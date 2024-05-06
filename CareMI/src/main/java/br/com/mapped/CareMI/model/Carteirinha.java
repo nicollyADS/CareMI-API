@@ -46,6 +46,9 @@ public class Carteirinha {
 
     //relacionamentos
     //carteirinha paciente - um pra UM
+    @OneToOne
+    @JoinColumn(name = "cdPaciente", nullable = false)
+    private Paciente paciente;
 
     public Carteirinha(CadastroCarteirinhaDto carteirinhaDto) {
         nome = carteirinhaDto.nome();

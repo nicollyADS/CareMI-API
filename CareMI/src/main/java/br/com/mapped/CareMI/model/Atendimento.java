@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -47,11 +48,18 @@ public class Atendimento {
 
     //relacionamentos
     //atendimento paciente - muitos pra um
+    @ManyToOne
+    @JoinColumn(name="cdPaciente", nullable = false)
+    private Paciente paciente;
 
     //atendimento medico - muitos pra um
+    @ManyToOne
+    @JoinColumn(name="cdMedico", nullable = false)
+    private Medico medico;
 
     //atendimento exame - um pra muitos
-
+    @OneToMany(mappedBy = "atendimento")
+    private List<Exame> exames;
 
 
     public Atendimento(CadastroAtendimentoDto atendimentoDto) {
