@@ -44,6 +44,9 @@ public class Carteirinha {
     @Column(name="dtNascimento", nullable = false)
     private LocalDate dataNascimento;
 
+    //relacionamentos
+    //carteirinha paciente - um pra UM
+
     public Carteirinha(CadastroCarteirinhaDto carteirinhaDto) {
         nome = carteirinhaDto.nome();
         planoSaude = carteirinhaDto.planoSaude();

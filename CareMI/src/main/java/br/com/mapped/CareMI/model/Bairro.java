@@ -33,6 +33,11 @@ public class Bairro {
     private String cep;
 
 
+    //relacionamentos
+    //bairro logradouro - um pra muitos
+
+    //bairro cidade - muitos pra um
+
     public Bairro(CadastroBairroDto bairroDto) {
         nome = bairroDto.nome();
         zona = bairroDto.zona();

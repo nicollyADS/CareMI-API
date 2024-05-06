@@ -31,6 +31,8 @@ public class Login {
     @Column(name="fgAtivo", length = 1, nullable = false)
     private Integer ativo;
 
+    //relacionamentos
+    //login usuario - um pra UM
 
     public Login(CadastroLoginDto loginDto) {
         cpf = loginDto.cpf();

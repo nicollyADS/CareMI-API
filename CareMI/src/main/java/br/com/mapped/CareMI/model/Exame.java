@@ -30,6 +30,10 @@ public class Exame {
     @Column(name="dsExame", length = 500, nullable = false)
     private String descricao;
 
+    //relacionamentos
+    //exame atendimento - muitos pra um
+
+    //exame resultadoExame - UM pra um
 
     public Exame(CadastroExameDto exameDto) {
         data = exameDto.data();

@@ -51,6 +51,12 @@ public class Usuario {
     @Column(name="fgAtivo", length = 1, nullable = false)
     private Integer ativo;
 
+    //relacionamentos
+    //usuario enderecoPaciente - um pra UM
+
+    //usuario login - UM pra um
+
+    //usuario paciente - UM pra um
 
     public Usuario(CadastroUsuarioDto usuarioDto) {
         nome = usuarioDto.nome();

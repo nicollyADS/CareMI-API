@@ -45,6 +45,9 @@ public class PlanoSaude {
     @Column(name="fgAtivo", length = 1, nullable = false)
     private Integer ativo;
 
+    //relacionamentos
+    //planoSaude pacientePlanoSaude - um pra muitos
+
     public PlanoSaude(CadastroPlanoSaudeDto planoSaudeDto) {
         razaoSocial = planoSaudeDto.razaoSocial();
         fantasia = planoSaudeDto.fantasia();

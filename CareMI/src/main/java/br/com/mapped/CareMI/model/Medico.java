@@ -37,6 +37,11 @@ public class Medico {
     @Column(name="nrCelular", length = 15, nullable = false)
     private String celular;
 
+    //relacionamentos
+
+    //medico atendimeno - um pra muitos
+
+
     public Medico(CadastroMedicoDto medicoDto) {
         nome = medicoDto.nome();
         especializacao = medicoDto.especializacao();

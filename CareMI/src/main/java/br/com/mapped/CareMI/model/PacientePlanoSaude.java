@@ -33,6 +33,10 @@ public class PacientePlanoSaude {
     @Column(name="dtFim", nullable = false)
     private LocalDate dataFim;
 
+    //relacionamentos
+    //pacientePlanoSaude Paciente - muitos pra um
+
+    //pacientePlanoSaude planoSaude - muitos pra um
 
     public PacientePlanoSaude(CadastroPacientePlanoSaudeDto pacientePlanoSaudeDto) {
         carteira = pacientePlanoSaudeDto.carteira();

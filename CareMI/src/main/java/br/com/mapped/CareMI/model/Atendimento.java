@@ -45,6 +45,14 @@ public class Atendimento {
     @Column(name="fgAtivo", length = 1)
     private Integer ativo;
 
+    //relacionamentos
+    //atendimento paciente - muitos pra um
+
+    //atendimento medico - muitos pra um
+
+    //atendimento exame - um pra muitos
+
+
 
     public Atendimento(CadastroAtendimentoDto atendimentoDto) {
         descricao = atendimentoDto.descricao();

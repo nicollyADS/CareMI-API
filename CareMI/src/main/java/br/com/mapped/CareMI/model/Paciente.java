@@ -38,6 +38,15 @@ public class Paciente {
     @Enumerated(EnumType.STRING)
     private SexoBiologico sexoBiologico;
 
+    //relacionamentos
+    //paciente usuario - um pra UM
+
+    //paciente atendimento - um pra muitos
+
+    //paciente carteirinha - UM pra um
+
+    //paciente pacientePlanoSaude - um pra muitos
+
 
     public Paciente(CadastroPacienteDto pacienteDto) {
         nome = pacienteDto.nome();

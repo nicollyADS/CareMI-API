@@ -25,6 +25,12 @@ public class Logradouro {
     @Column(name="nmRua", length = 100, nullable = false)
     private String nome;
 
+    //relacionamentos
+    //logradouro bairro - muitos pra um
+
+    //logradouro enderecoPaciente - um pra muitos
+
+    //logradouro enderecoHospital - um pra muitos
 
     public Logradouro(CadastroLogradouroDto logradouroDto) {
         nome = logradouroDto.nome();

@@ -25,6 +25,12 @@ public class Cidade {
     @Column(name="nmCidade", length = 100, nullable = false)
     private String nome;
 
+    //relacionamentos
+
+    //cidade bairro - um pra muitos
+
+    //cidade estado - muitos pra um
+
 
     public Cidade(CadastroCidadeDto cidadeDto) {
         nome = cidadeDto.nome();

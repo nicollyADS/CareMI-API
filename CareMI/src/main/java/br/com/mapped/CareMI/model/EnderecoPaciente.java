@@ -31,6 +31,11 @@ public class EnderecoPaciente {
     @Column(name="dsComplemento", length = 100, nullable = false)
     private String complemento;
 
+    //relacionamentos
+    //enderecoPaciente usuario - UM pra um
+
+    //enderecoPaciente logradouro - muitos pra um
+
 
     public EnderecoPaciente(CadastroEnderecoPacienteDto enderecoPacienteDto) {
         logradouro = enderecoPacienteDto.logradouro();

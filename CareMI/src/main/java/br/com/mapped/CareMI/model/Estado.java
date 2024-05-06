@@ -28,6 +28,12 @@ public class Estado {
     @Column(name="sgEstado", length = 3, nullable = false)
     private String sigla;
 
+    //relacionamentos
+
+    //estado cidade - um pra muitos
+
+
+
     public Estado(CadastroEstadoDto estadolDto) {
         nome = estadolDto.nome();
         sigla = estadolDto.sigla();

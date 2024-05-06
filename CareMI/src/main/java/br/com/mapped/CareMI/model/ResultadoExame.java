@@ -61,6 +61,8 @@ public class ResultadoExame {
     @Column(name="nrHormonioTrioEstimulanteTSH", length = 5, nullable = false)
     private Integer hormonioTrioestimulanteTSH;
 
+    //relacionamentos
+    //resultadoExame exame - um pra UM
 
     public ResultadoExame(CadastroResultadoExameDto resultadoExameDto) {
         descricao = resultadoExameDto.descricao();

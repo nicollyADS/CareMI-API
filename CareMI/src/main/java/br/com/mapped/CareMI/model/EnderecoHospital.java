@@ -31,6 +31,8 @@ public class EnderecoHospital {
     @Column(name="dsComplemento", length = 100, nullable = false)
     private String complemento;
 
+    //relacionamentos
+    //enderecoHospital logradouro - muitos pra um
 
 
     public EnderecoHospital(CadastroEnderecoHospitalDto enderecoHospitalDto) {
