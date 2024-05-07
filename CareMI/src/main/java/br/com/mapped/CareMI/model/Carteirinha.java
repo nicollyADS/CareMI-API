@@ -1,6 +1,5 @@
 package br.com.mapped.CareMI.model;
-import br.com.mapped.CareMI.dto.CarteirinhaDto.AtualizacaoCarteirinhaDto;
-import br.com.mapped.CareMI.dto.CarteirinhaDto.CadastroCarteirinhaDto;
+import br.com.mapped.CareMI.dto.PacienteDto.CadastroPacienteDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,7 +23,7 @@ public class Carteirinha {
     private Long id;
 
     @Column(name="nmPaciente", length = 100, nullable = false)
-    private String nome;
+    private String nomePaciente;
 
     @Column(name="nmPlanoSaude", length = 100, nullable = false)
     private String planoSaude;
@@ -50,8 +49,8 @@ public class Carteirinha {
     @JoinColumn(name = "cdPaciente", nullable = false)
     private Paciente paciente;
 
-    public Carteirinha(CadastroCarteirinhaDto carteirinhaDto) {
-        nome = carteirinhaDto.nome();
+    public Carteirinha(CadastroPacienteDto carteirinhaDto) {
+        nomePaciente = carteirinhaDto.nomePaciente();
         planoSaude = carteirinhaDto.planoSaude();
         cns = carteirinhaDto.cns();
         empresa = carteirinhaDto.empresa();
@@ -60,20 +59,4 @@ public class Carteirinha {
         dataNascimento = carteirinhaDto.dataNascimento();
     }
 
-    public void atualizarInformacoesCarteirinha(AtualizacaoCarteirinhaDto dto) {
-        if (dto.nome() != null)
-            nome = dto.nome();
-        if (dto.planoSaude() != null)
-            planoSaude = dto.planoSaude();
-        if (dto.cns() != null)
-            cns = dto.cns();
-        if (dto.empresa() != null)
-            empresa = dto.empresa();
-        if (dto.carencia() != null)
-            carencia = dto.carencia();
-        if (dto.acomodacao() != null)
-            acomodacao = dto.acomodacao();
-        if (dto.dataNascimento() != null)
-            dataNascimento = dto.dataNascimento();
-    }
 }

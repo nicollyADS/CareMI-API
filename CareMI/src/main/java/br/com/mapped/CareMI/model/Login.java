@@ -1,7 +1,7 @@
 package br.com.mapped.CareMI.model;
 
-import br.com.mapped.CareMI.dto.LoginDto.AtualizacaoLoginDto;
-import br.com.mapped.CareMI.dto.LoginDto.CadastroLoginDto;
+import br.com.mapped.CareMI.dto.UsuarioDto.AtualizacaoUsuarioDto;
+import br.com.mapped.CareMI.dto.UsuarioDto.CadastroUsuarioDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,13 +23,13 @@ public class Login {
     private Long id;
 
     @Column(name="nrCpf", length = 15, nullable = false)
-    private String cpf;
+    private String numCpf;
 
     @Column(name="dsSenha", length = 100, nullable = false)
     private String senha;
 
     @Column(name="fgAtivo", length = 1, nullable = false)
-    private Integer ativo;
+    private Integer flagAtivo;
 
     //relacionamentos
     //login usuario - um pra UM
@@ -37,19 +37,11 @@ public class Login {
     @JoinColumn(name = "cdUsuario", nullable = false)
     private Usuario usuario;
 
-    public Login(CadastroLoginDto loginDto) {
-        cpf = loginDto.cpf();
+    public Login(CadastroUsuarioDto loginDto) {
+        numCpf = loginDto.cpf();
         senha = loginDto.senha();
-        ativo = loginDto.ativo();
+        flagAtivo = loginDto.flagAtivo();
     }
 
-    public void atualizarInformacoesLogin(AtualizacaoLoginDto dto) {
-        if (dto.cpf() != null)
-            cpf = dto.cpf();
-        if (dto.senha() != null)
-            senha = dto.senha();
-        if (dto.ativo() != null)
-            ativo = dto.ativo();
-    }
 }
 

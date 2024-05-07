@@ -44,6 +44,10 @@ public class Exame {
     public Exame(CadastroExameDto exameDto) {
         data = exameDto.data();
         descricao = exameDto.descricao();
+
+        //resultadoExame
+        resultadoExame = new ResultadoExame(exameDto);
+        resultadoExame.setExame(this);
     }
 
     public void atualizarInformacoesExame(AtualizacaoExameDto dto) {
@@ -51,5 +55,34 @@ public class Exame {
             data = dto.data();
         if (dto.descricao() != null)
             descricao = dto.descricao();
+
+        //resultadoExame
+        if (dto.descricaoExame() != null)
+            this.resultadoExame.setDescricaoExame(dto.descricaoExame());
+        if (dto.observacao() != null)
+            this.resultadoExame.setObservacao(dto.observacao());
+        if (dto.resultado() != null)
+            this.resultadoExame.setResultado(dto.resultado());
+        if (dto.globulosVermelhos() != null)
+            this.resultadoExame.setGlobulosVermelhos(dto.globulosVermelhos());
+        if (dto.globulosBrancos() != null)
+            this.resultadoExame.setGlobulosBrancos(dto.globulosBrancos());
+        if (dto.plaquetas() != null)
+            this.resultadoExame.setPlaquetas(dto.plaquetas());
+        if (dto.homoglobinaGlicada() != null)
+            this.resultadoExame.setHomoglobinaGlicada(dto.homoglobinaGlicada());
+        if (dto.creatina() != null)
+            this.resultadoExame.setCreatina(dto.creatina());
+        if (dto.colesterolTotal() != null)
+            this.resultadoExame.setColesterolTotal(dto.colesterolTotal());
+        if (dto.colesterolHDL() != null)
+            this.resultadoExame.setColesterolHDL(dto.colesterolHDL());
+        if (dto.colesterolLDL() != null)
+            this.resultadoExame.setColesterolLDL(dto.colesterolLDL());
+        if (dto.teglicerides() != null)
+            this.resultadoExame.setTeglicerides(dto.teglicerides());
+        if (dto.hormonioTrioestimulanteTSH() != null)
+            this.resultadoExame.setHormonioTrioestimulanteTSH(dto.hormonioTrioestimulanteTSH());
+
     }
 }

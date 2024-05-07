@@ -65,6 +65,10 @@ public class Paciente {
         altura = pacienteDto.altura();
         grupoSanguineo = pacienteDto.grupoSanguineo();
         sexoBiologico = pacienteDto.sexoBiologico();
+
+        //carteirnha
+        carteirinha = new Carteirinha(pacienteDto);
+        carteirinha.setPaciente(this);
     }
 
     public void atualizarInformacoesPaciente(AtualizacaoPacienteDto dto) {
@@ -78,6 +82,22 @@ public class Paciente {
             grupoSanguineo = dto.grupoSanguineo();
         if (dto.sexoBiologico() != null)
             sexoBiologico = dto.sexoBiologico();
+
+        //carteirinha
+        if (dto.nomePaciente() != null)
+            this.carteirinha.setNomePaciente(dto.nomePaciente());
+        if (dto.planoSaude() != null)
+            this.carteirinha.setPlanoSaude(dto.planoSaude());
+        if (dto.cns() != null)
+            this.carteirinha.setCns(dto.cns());
+        if (dto.empresa() != null)
+            this.carteirinha.setEmpresa(dto.empresa());
+        if (dto.carencia() != null)
+            this.carteirinha.setCarencia(dto.carencia());
+        if (dto.acomodacao() != null)
+            this.carteirinha.setAcomodacao(dto.acomodacao());
+        if (dto.dataNascimento() != null)
+            this.carteirinha.setDataNascimento(dto.dataNascimento());
     }
 
 }

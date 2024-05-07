@@ -1,7 +1,6 @@
 package br.com.mapped.CareMI.model;
 
-import br.com.mapped.CareMI.dto.EnderecoPacienteDto.AtualizacaoEnderecoPacienteDto;
-import br.com.mapped.CareMI.dto.EnderecoPacienteDto.CadastroEnderecoPacienteDto;
+import br.com.mapped.CareMI.dto.UsuarioDto.CadastroUsuarioDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -43,19 +42,11 @@ public class EnderecoPaciente {
     private Logradouro logradouro;
 
 
-    public EnderecoPaciente(CadastroEnderecoPacienteDto enderecoPacienteDto) {
+    public EnderecoPaciente(CadastroUsuarioDto enderecoPacienteDto) {
         numLogradouro = enderecoPacienteDto.numLogradouro();
         pontoReferencia = enderecoPacienteDto.pontoReferencia();
         complemento = enderecoPacienteDto.complemento();
     }
 
-    public void atualizarInformacoesEnderecoPaciente(AtualizacaoEnderecoPacienteDto dto) {
-        if (dto.numLogradouro() != null)
-            numLogradouro = dto.numLogradouro();
-        if (dto.pontoReferencia() != null)
-            pontoReferencia = dto.pontoReferencia();
-        if (dto.complemento() != null)
-            complemento = dto.complemento();
-    }
 }
 
