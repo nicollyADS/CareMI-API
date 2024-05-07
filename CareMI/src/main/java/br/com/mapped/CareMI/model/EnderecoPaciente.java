@@ -32,8 +32,9 @@ public class EnderecoPaciente {
     private String complemento;
 
     //relacionamentos
-    //enderecoPaciente usuario - UM pra um
-    @OneToOne(mappedBy = "enderecoPaciente", cascade = CascadeType.ALL)
+    //enderecoPaciente usuario - um pra UM
+    @OneToOne
+    @JoinColumn(name = "cdUsuario", nullable = false)
     private Usuario usuario;
 
     //enderecoPaciente logradouro - muitos pra um

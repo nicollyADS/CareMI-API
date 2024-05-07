@@ -52,9 +52,8 @@ public class Usuario {
     private Integer ativo;
 
     //relacionamentos
-    //usuario enderecoPaciente - um pra UM
-    @OneToOne
-    @JoinColumn(name = "cdEndereco", nullable = false)
+    //usuario enderecoPaciente - UM pra um
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
     private EnderecoPaciente enderecoPaciente;
 
     //usuario login - UM pra um
