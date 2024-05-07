@@ -12,7 +12,7 @@ public record DetalhesPacienteDto(Long id, String nome, Integer peso, Integer al
                 //paciente
                 paciente.getId(), paciente.getNome(), paciente.getPeso(), paciente.getAltura(), paciente.getGrupoSanguineo(), paciente.getSexoBiologico(),
                 //carteirinha
-                paciente.getCarteirinha().getNome(), paciente.getCarteirinha().getPlanoSaude(), paciente.getCarteirinha().getCns(), paciente.getCarteirinha().getEmpresa(),
+                paciente.getCarteirinha().getNomePaciente(), paciente.getCarteirinha().getPlanoSaude(), paciente.getCarteirinha().getCns(), paciente.getCarteirinha().getEmpresa(),
                 paciente.getCarteirinha().getCarencia(), paciente.getCarteirinha().getAcomodacao(), paciente.getCarteirinha().getDataNascimento()
         );
     }
