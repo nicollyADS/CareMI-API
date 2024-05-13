@@ -71,6 +71,8 @@ public class AtendimentoController {
         return ResponseEntity.ok(new DetalhesAtendimentoDto(atendimento));
     }
 
+    //relacionamentos
+
     //POST EXAME
     @PostMapping("{id}/exames")
     @Transactional
