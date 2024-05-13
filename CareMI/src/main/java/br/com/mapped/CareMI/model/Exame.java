@@ -41,13 +41,16 @@ public class Exame {
     @OneToOne(mappedBy = "exame", cascade = CascadeType.ALL)
     private ResultadoExame resultadoExame;
 
-    public Exame(CadastroExameDto exameDto) {
+    public Exame(CadastroExameDto exameDto, Atendimento atendimento) {
         data = exameDto.data();
         descricao = exameDto.descricao();
 
         //resultadoExame
         resultadoExame = new ResultadoExame(exameDto);
         resultadoExame.setExame(this);
+
+        //atendimento
+        this.atendimento = atendimento;
     }
 
     public void atualizarInformacoesExame(AtualizacaoExameDto dto) {

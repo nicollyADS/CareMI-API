@@ -1,8 +1,12 @@
 package br.com.mapped.CareMI.controller;
+import br.com.mapped.CareMI.dto.BairroDto.CadastroBairroDto;
+import br.com.mapped.CareMI.dto.BairroDto.DetalhesBairroDto;
 import br.com.mapped.CareMI.dto.CidadeDto.AtualizacaoCidadeDto;
 import br.com.mapped.CareMI.dto.CidadeDto.CadastroCidadeDto;
 import br.com.mapped.CareMI.dto.CidadeDto.DetalhesCidadeDto;
+import br.com.mapped.CareMI.model.Bairro;
 import br.com.mapped.CareMI.model.Cidade;
+import br.com.mapped.CareMI.repository.BairroRepository;
 import br.com.mapped.CareMI.repository.CidadeRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +24,9 @@ public class CidadeController {
     @Autowired
     private CidadeRepository cidadeRepository;
 
+    @Autowired
+    private BairroRepository bairroRepository;
+
     //GET
     @GetMapping
     public ResponseEntity<List<DetalhesCidadeDto>> get(Pageable pageable){
@@ -35,16 +42,16 @@ public class CidadeController {
         return ResponseEntity.ok(new DetalhesCidadeDto(cidade));
     }
 
-    //POST
-    @PostMapping
-    @Transactional
-    public ResponseEntity<DetalhesCidadeDto> post(@RequestBody @Valid CadastroCidadeDto cidadeDto,
-                                                       UriComponentsBuilder uriBuilder){
-        var cidade = new Cidade(cidadeDto);
-        cidadeRepository.save(cidade);
-        var uri = uriBuilder.path("cidades/{id}").buildAndExpand(cidade.getId()).toUri();
-        return ResponseEntity.created(uri).body(new DetalhesCidadeDto(cidade));
-    }
+//    //POST
+//    @PostMapping
+//    @Transactional
+//    public ResponseEntity<DetalhesCidadeDto> post(@RequestBody @Valid CadastroCidadeDto cidadeDto,
+//                                                       UriComponentsBuilder uriBuilder){
+//        var cidade = new Cidade(cidadeDto);
+//        cidadeRepository.save(cidade);
+//        var uri = uriBuilder.path("cidades/{id}").buildAndExpand(cidade.getId()).toUri();
+//        return ResponseEntity.created(uri).body(new DetalhesCidadeDto(cidade));
+//    }
 
     //DELETE
     @DeleteMapping("{id}")
@@ -63,4 +70,20 @@ public class CidadeController {
         cidade.atualizarInformacoesCidade(dto);
         return ResponseEntity.ok(new DetalhesCidadeDto(cidade));
     }
+
+    //relacionamentos
+
+    //POST BAIRRO
+    @PostMapping("{id}/bairros")
+    @Transactional
+    public ResponseEntity<DetalhesBairroDto> post(@PathVariable("id") Long id,
+                                                  @RequestBody @Valid CadastroBairroDto dto,
+                                                  UriComponentsBuilder uriBuilder){
+        var cidade = cidadeRepository.getReferenceById(id);
+        var bairro = new Bairro(dto, cidade);
+        bairroRepository.save(bairro);
+        var uri = uriBuilder.path("bairro/{id}").buildAndExpand(bairro.getId()).toUri();
+        return ResponseEntity.created(uri).body(new DetalhesBairroDto(bairro));
+    }
+
 }

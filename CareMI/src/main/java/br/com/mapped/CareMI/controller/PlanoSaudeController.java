@@ -1,8 +1,12 @@
 package br.com.mapped.CareMI.controller;
+import br.com.mapped.CareMI.dto.PacientePlanoSaudeDto.CadastroPacientePlanoSaudeDto;
+import br.com.mapped.CareMI.dto.PacientePlanoSaudeDto.DetalhesPacientePlanoSaudeDto;
 import br.com.mapped.CareMI.dto.PlanoSaudeDto.AtualizacaoPlanoSaudeDto;
 import br.com.mapped.CareMI.dto.PlanoSaudeDto.CadastroPlanoSaudeDto;
 import br.com.mapped.CareMI.dto.PlanoSaudeDto.DetalhesPlanoSaudeDto;
+import br.com.mapped.CareMI.model.PacientePlanoSaude;
 import br.com.mapped.CareMI.model.PlanoSaude;
+import br.com.mapped.CareMI.repository.PacientePlanoSaudeRepository;
 import br.com.mapped.CareMI.repository.PlanoSaudeRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +23,7 @@ import java.util.List;
 public class PlanoSaudeController {
     @Autowired
     private PlanoSaudeRepository planoSaudeRepository;
+
 
     //GET
     @GetMapping
@@ -63,4 +68,8 @@ public class PlanoSaudeController {
         planoSaude.atualizarInformacoesPlanoSaude(dto);
         return ResponseEntity.ok(new DetalhesPlanoSaudeDto(planoSaude));
     }
+
+    //relacionametos
+    //POST PACIENTE PLANO SAUDE
+
 }

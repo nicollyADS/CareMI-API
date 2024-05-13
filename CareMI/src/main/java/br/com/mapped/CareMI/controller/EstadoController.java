@@ -1,8 +1,12 @@
 package br.com.mapped.CareMI.controller;
+import br.com.mapped.CareMI.dto.CidadeDto.CadastroCidadeDto;
+import br.com.mapped.CareMI.dto.CidadeDto.DetalhesCidadeDto;
 import br.com.mapped.CareMI.dto.EstadoDto.AtualizacaoEstadoDto;
 import br.com.mapped.CareMI.dto.EstadoDto.CadastroEstadoDto;
 import br.com.mapped.CareMI.dto.EstadoDto.DetalhesEstadoDto;
+import br.com.mapped.CareMI.model.Cidade;
 import br.com.mapped.CareMI.model.Estado;
+import br.com.mapped.CareMI.repository.CidadeRepository;
 import br.com.mapped.CareMI.repository.EstadoRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +22,9 @@ import java.util.List;
 public class EstadoController {
     @Autowired
     private EstadoRepository estadoRepository;
+
+    @Autowired
+    private CidadeRepository cidadeRepository;
 
     //GET
     @GetMapping
@@ -61,5 +68,20 @@ public class EstadoController {
         var estado = estadoRepository.getReferenceById(id);
         estado.atualizarInformacoesEstado(dto);
         return ResponseEntity.ok(new DetalhesEstadoDto(estado));
+    }
+
+    //relacionamentos
+
+    //POST CIDADE
+    @PostMapping("{id}/cidades")
+    @Transactional
+    public ResponseEntity<DetalhesCidadeDto> post(@PathVariable("id") Long id,
+                                                  @RequestBody @Valid CadastroCidadeDto dto,
+                                                  UriComponentsBuilder uriBuilder){
+        var estado = estadoRepository.getReferenceById(id);
+        var cidade = new Cidade(dto, estado);
+        cidadeRepository.save(cidade);
+        var uri = uriBuilder.path("cidades/{id}").buildAndExpand(cidade.getId()).toUri();
+        return ResponseEntity.created(uri).body(new DetalhesCidadeDto(cidade));
     }
 }

@@ -35,16 +35,16 @@ public class EnderecoHospitalController {
         return ResponseEntity.ok(new DetalhesEnderecoHospitalDto(enderecoHospital));
     }
 
-    //POST
-    @PostMapping
-    @Transactional
-    public ResponseEntity<DetalhesEnderecoHospitalDto> post(@RequestBody @Valid CadastroEnderecoHospitalDto enderecoHospitalDto,
-                                                       UriComponentsBuilder uriBuilder){
-        var enderecoHospital = new EnderecoHospital(enderecoHospitalDto);
-        enderecoHospitalRepository.save(enderecoHospital);
-        var uri = uriBuilder.path("enderecos-hospitais/{id}").buildAndExpand(enderecoHospital.getId()).toUri();
-        return ResponseEntity.created(uri).body(new DetalhesEnderecoHospitalDto(enderecoHospital));
-    }
+//    //POST
+//    @PostMapping
+//    @Transactional
+//    public ResponseEntity<DetalhesEnderecoHospitalDto> post(@RequestBody @Valid CadastroEnderecoHospitalDto enderecoHospitalDto,
+//                                                       UriComponentsBuilder uriBuilder){
+//        var enderecoHospital = new EnderecoHospital(enderecoHospitalDto);
+//        enderecoHospitalRepository.save(enderecoHospital);
+//        var uri = uriBuilder.path("enderecos-hospitais/{id}").buildAndExpand(enderecoHospital.getId()).toUri();
+//        return ResponseEntity.created(uri).body(new DetalhesEnderecoHospitalDto(enderecoHospital));
+//    }
 
     //DELETE
     @DeleteMapping("{id}")

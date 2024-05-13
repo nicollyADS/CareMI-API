@@ -62,4 +62,7 @@ public class MedicoController {
         medico.atualizarInformacoesMedico(dto);
         return ResponseEntity.ok(new DetalhesMedicoDto(medico));
     }
+
+    //relacionametos
+    //POST ATENDIMENTO
 }

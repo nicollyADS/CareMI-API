@@ -39,8 +39,9 @@ public class Cidade {
     private Estado estado;
 
 
-    public Cidade(CadastroCidadeDto cidadeDto) {
+    public Cidade(CadastroCidadeDto cidadeDto, Estado estado) {
         nome = cidadeDto.nome();
+        this.estado = estado;
     }
 
     public void atualizarInformacoesCidade(AtualizacaoCidadeDto dto) {

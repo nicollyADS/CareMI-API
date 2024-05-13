@@ -1,9 +1,13 @@
 package br.com.mapped.CareMI.controller;
 import br.com.mapped.CareMI.dto.AtendimentoDto.AtualizacaoAtendimentoDto;
 import br.com.mapped.CareMI.dto.AtendimentoDto.CadastroAtendimentoDto;
+import br.com.mapped.CareMI.dto.ExameDto.CadastroExameDto;
+import br.com.mapped.CareMI.dto.ExameDto.DetalhesExameDto;
 import br.com.mapped.CareMI.model.Atendimento;
+import br.com.mapped.CareMI.model.Exame;
 import br.com.mapped.CareMI.repository.AtendimentoRepository;
 import br.com.mapped.CareMI.dto.AtendimentoDto.DetalhesAtendimentoDto;
+import br.com.mapped.CareMI.repository.ExameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +24,8 @@ import java.util.List;
 public class AtendimentoController {
     @Autowired
     private AtendimentoRepository atendimentoRepository;
+
+    private ExameRepository exameRepository;
 
     //GET
     @GetMapping
@@ -63,5 +69,18 @@ public class AtendimentoController {
         var atendimento = atendimentoRepository.getReferenceById(id);
         atendimento.atualizarInformacoesAtendimento(dto);
         return ResponseEntity.ok(new DetalhesAtendimentoDto(atendimento));
+    }
+
+    //POST EXAME
+    @PostMapping("{id}/exames")
+    @Transactional
+    public ResponseEntity<DetalhesExameDto> post(@PathVariable("id") Long id,
+                                                 @RequestBody @Valid CadastroExameDto dto,
+                                                 UriComponentsBuilder uriBuilder){
+        var atendimento = atendimentoRepository.getReferenceById(id);
+        var exame = new Exame(dto, atendimento);
+        exameRepository.save(exame);
+        var uri = uriBuilder.path("exames/{id}").buildAndExpand(exame.getId()).toUri();
+        return ResponseEntity.created(uri).body(new DetalhesExameDto(exame));
     }
 }

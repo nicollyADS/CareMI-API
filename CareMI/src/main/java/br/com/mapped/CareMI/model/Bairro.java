@@ -45,10 +45,11 @@ public class Bairro {
     @JoinColumn(name="cdCidade", nullable = false)
     private Cidade cidade;
 
-    public Bairro(CadastroBairroDto bairroDto) {
+    public Bairro(CadastroBairroDto bairroDto, Cidade cidade) {
         nome = bairroDto.nome();
         zona = bairroDto.zona();
         cep= bairroDto.cep();
+        this.cidade = cidade;
     }
 
     public void atualizarInformacoesBairro(AtualizacaoBairroDto dto) {

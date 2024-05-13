@@ -41,8 +41,9 @@ public class Logradouro {
     @OneToMany(mappedBy = "logradouro")
     private List<EnderecoHospital> enderecoHospitals;
 
-    public Logradouro(CadastroLogradouroDto logradouroDto) {
+    public Logradouro(CadastroLogradouroDto logradouroDto, Bairro bairro) {
         nome = logradouroDto.nome();
+        this.bairro = bairro;
     }
 
     public void atualizarInformacoesLogradouro(AtualizacaoLogradouroDto dto) {

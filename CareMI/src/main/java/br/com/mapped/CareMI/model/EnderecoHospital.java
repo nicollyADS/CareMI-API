@@ -39,10 +39,11 @@ public class EnderecoHospital {
 
 
 
-    public EnderecoHospital(CadastroEnderecoHospitalDto enderecoHospitalDto) {
+    public EnderecoHospital(CadastroEnderecoHospitalDto enderecoHospitalDto, Logradouro logradouro) {
         numLogradouro = enderecoHospitalDto.numLogradouro();
         pontoReferencia = enderecoHospitalDto.pontoReferencia();
         complemento = enderecoHospitalDto.complemento();
+        this.logradouro = logradouro;
     }
 
     public void atualizarInformacoesEnderecoHospital(AtualizacaoEnderecoHospitalDto dto) {

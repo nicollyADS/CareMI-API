@@ -2,8 +2,15 @@ package br.com.mapped.CareMI.controller;
 import br.com.mapped.CareMI.dto.PacienteDto.AtualizacaoPacienteDto;
 import br.com.mapped.CareMI.dto.PacienteDto.CadastroPacienteDto;
 import br.com.mapped.CareMI.dto.PacienteDto.DetalhesPacienteDto;
+import br.com.mapped.CareMI.dto.PacientePlanoSaudeDto.CadastroPacientePlanoSaudeDto;
+import br.com.mapped.CareMI.dto.PacientePlanoSaudeDto.DetalhesPacientePlanoSaudeDto;
+import br.com.mapped.CareMI.dto.PlanoSaudeDto.CadastroPlanoSaudeDto;
 import br.com.mapped.CareMI.model.Paciente;
+import br.com.mapped.CareMI.model.PacientePlanoSaude;
+import br.com.mapped.CareMI.model.PlanoSaude;
+import br.com.mapped.CareMI.repository.PacientePlanoSaudeRepository;
 import br.com.mapped.CareMI.repository.PacienteRepository;
+import br.com.mapped.CareMI.repository.PlanoSaudeRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +25,12 @@ import java.util.List;
 public class PacienteController {
     @Autowired
     private PacienteRepository pacienteRepository;
+
+    @Autowired
+    private PacientePlanoSaudeRepository pacientePlanoSaudeRepository;
+
+    @Autowired
+    private PlanoSaudeRepository planoSaudeRepository;
 
     //GET
     @GetMapping
@@ -62,4 +75,11 @@ public class PacienteController {
         paciente.atualizarInformacoesPaciente(dto);
         return ResponseEntity.ok(new DetalhesPacienteDto(paciente));
     }
+
+    //relacionametos
+    //POST PACIENTE PLANO SAUDE
+
+
+    //relacionametos
+    //POST ATENDIMENTO
 }
