@@ -63,6 +63,5 @@ public class MedicoController {
         return ResponseEntity.ok(new DetalhesMedicoDto(medico));
     }
 
-    //relacionametos
-    //POST ATENDIMENTO
+
 }

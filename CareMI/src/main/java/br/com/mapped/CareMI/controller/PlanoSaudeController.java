@@ -69,7 +69,5 @@ public class PlanoSaudeController {
         return ResponseEntity.ok(new DetalhesPlanoSaudeDto(planoSaude));
     }
 
-    //relacionametos
-    //POST PACIENTE PLANO SAUDE
 
 }

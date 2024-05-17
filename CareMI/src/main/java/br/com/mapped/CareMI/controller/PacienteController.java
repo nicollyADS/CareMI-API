@@ -75,11 +75,4 @@ public class PacienteController {
         paciente.atualizarInformacoesPaciente(dto);
         return ResponseEntity.ok(new DetalhesPacienteDto(paciente));
     }
-
-    //relacionametos
-    //POST PACIENTE PLANO SAUDE
-
-
-    //relacionametos
-    //POST ATENDIMENTO
 }

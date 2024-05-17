@@ -69,7 +69,7 @@ public class Atendimento {
         tempoSono = atendimentoDto.tempoSono();
         hereditario = atendimentoDto.hereditario();
         dataEnvio = atendimentoDto.dataEnvio() ;
-        ativo= atendimentoDto.ativo();
+        ativo = atendimentoDto.ativo();
     }
 
     public void atualizarInformacoesAtendimento(AtualizacaoAtendimentoDto dto) {

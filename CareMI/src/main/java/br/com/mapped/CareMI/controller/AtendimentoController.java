@@ -8,6 +8,8 @@ import br.com.mapped.CareMI.model.Exame;
 import br.com.mapped.CareMI.repository.AtendimentoRepository;
 import br.com.mapped.CareMI.dto.AtendimentoDto.DetalhesAtendimentoDto;
 import br.com.mapped.CareMI.repository.ExameRepository;
+import br.com.mapped.CareMI.repository.MedicoRepository;
+import br.com.mapped.CareMI.repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +28,7 @@ public class AtendimentoController {
     private AtendimentoRepository atendimentoRepository;
 
     private ExameRepository exameRepository;
+
 
     //GET
     @GetMapping
@@ -85,4 +88,5 @@ public class AtendimentoController {
         var uri = uriBuilder.path("exames/{id}").buildAndExpand(exame.getId()).toUri();
         return ResponseEntity.created(uri).body(new DetalhesExameDto(exame));
     }
+
 }
