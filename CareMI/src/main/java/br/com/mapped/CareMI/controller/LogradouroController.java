@@ -41,16 +41,6 @@ public class LogradouroController {
         return ResponseEntity.ok(new DetalhesLogradouroDto(logradouro));
     }
 
-    //POST
-//    @PostMapping
-//    @Transactional
-//    public ResponseEntity<DetalhesLogradouroDto> post(@RequestBody @Valid CadastroLogradouroDto logradouroDto,
-//                                                  UriComponentsBuilder uriBuilder){
-//        var logradouro = new Logradouro(logradouroDto);
-//        logradouroRepository.save(logradouro);
-//        var uri = uriBuilder.path("logradouros/{id}").buildAndExpand(logradouro.getId()).toUri();
-//        return ResponseEntity.created(uri).body(new DetalhesLogradouroDto(logradouro));
-//    }
 
     //DELETE
     @DeleteMapping("{id}")

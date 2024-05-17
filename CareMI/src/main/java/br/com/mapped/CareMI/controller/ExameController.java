@@ -34,16 +34,6 @@ public class ExameController {
         return ResponseEntity.ok(new DetalhesExameDto(exame));
     }
 
-//    //POST
-//    @PostMapping
-//    @Transactional
-//    public ResponseEntity<DetalhesExameDto> post(@RequestBody @Valid CadastroExameDto exameDto,
-//                                                  UriComponentsBuilder uriBuilder){
-//        var exame = new Exame(exameDto);
-//        exameRepository.save(exame);
-//        var uri = uriBuilder.path("exames/{id}").buildAndExpand(exame.getId()).toUri();
-//        return ResponseEntity.created(uri).body(new DetalhesExameDto(exame));
-//    }
 
     //DELETE
     @DeleteMapping("{id}")

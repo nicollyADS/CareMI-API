@@ -41,16 +41,6 @@ public class BairroController {
         return ResponseEntity.ok(new DetalhesBairroDto(bairro));
     }
 
-//    //POST
-//    @PostMapping
-//    @Transactional
-//    public ResponseEntity<DetalhesBairroDto> post(@RequestBody @Valid CadastroBairroDto bairroDto,
-//                                                       UriComponentsBuilder uriBuilder){
-//        var bairro = new Bairro(bairroDto);
-//        bairroRepository.save(bairro);
-//        var uri = uriBuilder.path("bairros/{id}").buildAndExpand(bairro.getId()).toUri();
-//        return ResponseEntity.created(uri).body(new DetalhesBairroDto(bairro));
-//    }
 
     //DELETE
     @DeleteMapping("{id}")

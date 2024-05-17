@@ -42,16 +42,6 @@ public class CidadeController {
         return ResponseEntity.ok(new DetalhesCidadeDto(cidade));
     }
 
-//    //POST
-//    @PostMapping
-//    @Transactional
-//    public ResponseEntity<DetalhesCidadeDto> post(@RequestBody @Valid CadastroCidadeDto cidadeDto,
-//                                                       UriComponentsBuilder uriBuilder){
-//        var cidade = new Cidade(cidadeDto);
-//        cidadeRepository.save(cidade);
-//        var uri = uriBuilder.path("cidades/{id}").buildAndExpand(cidade.getId()).toUri();
-//        return ResponseEntity.created(uri).body(new DetalhesCidadeDto(cidade));
-//    }
 
     //DELETE
     @DeleteMapping("{id}")

@@ -17,8 +17,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @EntityListeners(AuditingEntityListener.class)
 public class EnderecoHospital {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "atendimento")
-    @SequenceGenerator(name = "atendimento", sequenceName = "seq_mi_atendimento", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "enderecoHospital")
+    @SequenceGenerator(name = "enderecoHospital", sequenceName = "seq_mi_endereco_hospital", allocationSize = 1)
     @Column(name="cdEndereco", length = 9)
     private Long id;
 
