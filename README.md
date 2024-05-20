@@ -64,7 +64,7 @@ Assista ao vídeo de apresentação da proposta tecnológica, público-alvo e pr
 - **DELETE:** `/atendimentos/{id}` - deleta um atendimento
 - **POST EXAME:** `/atendimentos/{id}/exames` - adiciona um exame a um atendimento existente
 - **GET ATENDIMENTOS POR MÉDICO:** `/atendimentos/por-medico` - lista os atendimentos filtrados por médico, fornecendo o parametro `id-medico`
-- **GET ATENDIMENTOS POR PACIENTE:** `/atendimentos/por-paciente` - lista os atendimentos filtrados por paciente `id-paciente`
+- **GET ATENDIMENTOS POR PACIENTE:** `/atendimentos/por-paciente` - lista os atendimentos filtrados por paciente, fornecendo o parametro `id-paciente`
 
 **Bairro**
 - **GET:** `/bairros` - lista todos os bairros
