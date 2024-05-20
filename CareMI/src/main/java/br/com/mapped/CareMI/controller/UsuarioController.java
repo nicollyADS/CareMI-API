@@ -3,6 +3,8 @@ import br.com.mapped.CareMI.dto.UsuarioDto.AtualizacaoUsuarioDto;
 import br.com.mapped.CareMI.dto.UsuarioDto.CadastroUsuarioDto;
 import br.com.mapped.CareMI.dto.UsuarioDto.DetalhesUsuarioDto;
 import br.com.mapped.CareMI.model.Usuario;
+import br.com.mapped.CareMI.repository.CarteirinhaRepository;
+import br.com.mapped.CareMI.repository.LoginRepository;
 import br.com.mapped.CareMI.repository.LogradouroRepository;
 import br.com.mapped.CareMI.repository.UsuarioRepository;
 import jakarta.validation.Valid;
@@ -24,6 +26,10 @@ public class UsuarioController {
 
     @Autowired
     private LogradouroRepository logradouroRepository;
+
+    @Autowired
+    private LoginRepository loginRepository;
+
 
     //GET
     @GetMapping
@@ -71,6 +77,19 @@ public class UsuarioController {
     }
 
 
+    //BUSCAR USUARIO POR CPF
+    @GetMapping("por-cpf")
+    public ResponseEntity<Page<DetalhesUsuarioDto>> getCPF(@RequestParam("cpf") String cpf, Pageable pageable){
+        var page = usuarioRepository.findByCpf(cpf, pageable).map(DetalhesUsuarioDto::new);
+        return ResponseEntity.ok(page);
+    }
+
+    //BUSCAR USUARIO POR RG
+    @GetMapping("por-rg")
+    public ResponseEntity<Page<DetalhesUsuarioDto>> getRG(@RequestParam("rg") String rg, Pageable pageable){
+        var page = usuarioRepository.findByRG(rg, pageable).map(DetalhesUsuarioDto::new);
+        return ResponseEntity.ok(page);
+    }
 
 
 

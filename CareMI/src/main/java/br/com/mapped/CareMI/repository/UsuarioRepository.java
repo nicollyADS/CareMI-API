@@ -9,7 +9,12 @@ import org.springframework.data.repository.query.Param;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
+    //BUSCAR USUARIO POR CPF
+    @Query("FROM Usuario u WHERE u.cpf = :cpf")
+    Page<Usuario> findByCpf(@Param("cpf") String cpf, Pageable pageable);
 
-
+    //BUSCAR USUARIO POR RG
+    @Query("FROM Usuario u WHERE u.rg = :rg")
+    Page<Usuario> findByRG(@Param("rg") String rg, Pageable pageable);
 
 }
