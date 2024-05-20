@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -22,7 +23,7 @@ public class Atendimento {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "atendimento")
     @SequenceGenerator(name = "atendimento", sequenceName = "seq_mi_atendimento", allocationSize = 1)
     @Column(name="cdAtendimento", length = 9)
-    private Long id;
+    private Long idAtendimento;
 
     @Column(name="dsDescricao", length = 500, nullable = false)
     private String descricao;
@@ -45,6 +46,21 @@ public class Atendimento {
     @Column(name="fgAtivo", length = 1)
     private Integer ativo;
 
+    //relacionamentos
+    //atendimento paciente - muitos pra um
+    @ManyToOne
+    @JoinColumn(name="cdPaciente", nullable = false)
+    private Paciente paciente;
+
+    //atendimento medico - muitos pra um
+    @ManyToOne
+    @JoinColumn(name="cdMedico", nullable = false)
+    private Medico medico;
+
+    //atendimento exame - um pra muitos
+    @OneToMany(mappedBy = "atendimento")
+    private List<Exame> exames;
+
 
     public Atendimento(CadastroAtendimentoDto atendimentoDto) {
         descricao = atendimentoDto.descricao();
@@ -53,7 +69,7 @@ public class Atendimento {
         tempoSono = atendimentoDto.tempoSono();
         hereditario = atendimentoDto.hereditario();
         dataEnvio = atendimentoDto.dataEnvio() ;
-        ativo= atendimentoDto.ativo();
+        ativo = atendimentoDto.ativo();
     }
 
     public void atualizarInformacoesAtendimento(AtualizacaoAtendimentoDto dto) {

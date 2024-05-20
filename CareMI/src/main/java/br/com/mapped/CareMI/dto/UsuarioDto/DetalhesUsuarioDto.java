@@ -3,9 +3,18 @@ import br.com.mapped.CareMI.model.EstadoCivil;
 import br.com.mapped.CareMI.model.Usuario;
 import java.time.LocalDate;
 
-public record DetalhesUsuarioDto(Long id, String nome, LocalDate dataNascimento, String cpf, String rg, String nacionalidade, LocalDate dataCadastro, EstadoCivil estadoCivil, String profissao, Integer ativo) {
+public record DetalhesUsuarioDto(Long idUsuario, String nome, LocalDate dataNascimento, String cpf, String rg, String nacionalidade, LocalDate dataCadastro, EstadoCivil estadoCivil, String profissao, Integer ativo,
+                                 String numCpf, String senha, Integer flagAtivo,
+                                 Integer numLogradouro, String pontoReferencia, String complemento, Long idLogradouro) {
 
     public DetalhesUsuarioDto(Usuario usuario) {
-        this(usuario.getId(), usuario.getNome(), usuario.getDataNascimento(), usuario.getCpf(), usuario.getRg(), usuario.getNacionalidade(), usuario.getDataCadastro(), usuario.getEstadoCivil(), usuario.getProfissao(), usuario.getAtivo());
+        this(
+                //usuario
+                usuario.getIdUsuario(), usuario.getNome(), usuario.getDataNascimento(), usuario.getCpf(), usuario.getRg(), usuario.getNacionalidade(), usuario.getDataCadastro(), usuario.getEstadoCivil(), usuario.getProfissao(), usuario.getAtivo(),
+                //login
+                usuario.getLogin().getNumCpf(), usuario.getLogin().getSenha(), usuario.getLogin().getFlagAtivo(),
+                //enderecoPaciente
+                usuario.getEnderecoPaciente().getNumLogradouro(), usuario.getEnderecoPaciente().getPontoReferencia(), usuario.getEnderecoPaciente().getComplemento(), usuario.getEnderecoPaciente().getLogradouro().getIdLogradouro()
+        );
     }
 }

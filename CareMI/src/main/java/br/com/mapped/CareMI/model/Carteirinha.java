@@ -1,6 +1,5 @@
 package br.com.mapped.CareMI.model;
-import br.com.mapped.CareMI.dto.CarteirinhaDto.AtualizacaoCarteirinhaDto;
-import br.com.mapped.CareMI.dto.CarteirinhaDto.CadastroCarteirinhaDto;
+import br.com.mapped.CareMI.dto.PacienteDto.CadastroPacienteDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,10 +20,10 @@ public class Carteirinha {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "carteirinha")
     @SequenceGenerator(name = "carteirinha", sequenceName = "seq_mi_carteirinha", allocationSize = 1)
     @Column(name="cdCarteirinha", length = 9)
-    private Long id;
+    private Long idCarteirinha;
 
     @Column(name="nmPaciente", length = 100, nullable = false)
-    private String nome;
+    private String nomePaciente;
 
     @Column(name="nmPlanoSaude", length = 100, nullable = false)
     private String planoSaude;
@@ -44,8 +43,14 @@ public class Carteirinha {
     @Column(name="dtNascimento", nullable = false)
     private LocalDate dataNascimento;
 
-    public Carteirinha(CadastroCarteirinhaDto carteirinhaDto) {
-        nome = carteirinhaDto.nome();
+    //relacionamentos
+    //carteirinha paciente - um pra UM
+    @OneToOne
+    @JoinColumn(name = "cdPaciente", nullable = false)
+    private Paciente paciente;
+
+    public Carteirinha(CadastroPacienteDto carteirinhaDto) {
+        nomePaciente = carteirinhaDto.nomePaciente();
         planoSaude = carteirinhaDto.planoSaude();
         cns = carteirinhaDto.cns();
         empresa = carteirinhaDto.empresa();
@@ -54,20 +59,4 @@ public class Carteirinha {
         dataNascimento = carteirinhaDto.dataNascimento();
     }
 
-    public void atualizarInformacoesCarteirinha(AtualizacaoCarteirinhaDto dto) {
-        if (dto.nome() != null)
-            nome = dto.nome();
-        if (dto.planoSaude() != null)
-            planoSaude = dto.planoSaude();
-        if (dto.cns() != null)
-            cns = dto.cns();
-        if (dto.empresa() != null)
-            empresa = dto.empresa();
-        if (dto.carencia() != null)
-            carencia = dto.carencia();
-        if (dto.acomodacao() != null)
-            acomodacao = dto.acomodacao();
-        if (dto.dataNascimento() != null)
-            dataNascimento = dto.dataNascimento();
-    }
 }

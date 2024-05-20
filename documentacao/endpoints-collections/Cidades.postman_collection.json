@@ -1,19 +1,19 @@
 {
 	"info": {
-		"_postman_id": "3f0fb559-0dcb-4cf8-baed-0969e574752b",
-		"name": "LoginCareMI",
+		"_postman_id": "5bf27f73-8744-445e-b57b-e7a909b7353f",
+		"name": "Cidades",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "29771037"
 	},
 	"item": [
 		{
-			"name": "criando login 1",
+			"name": "post cidade 1",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"cpf\": \"12345678900\",\r\n  \"senha\": \"554432\",\r\n  \"ativo\": 1\r\n}",
+					"raw": "{\r\n    \"nome\": \"rio de janeiro\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -21,26 +21,28 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/logins",
+					"raw": "localhost:8080/estados/1/cidades",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"logins"
+						"estados",
+						"1",
+						"cidades"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "criando login 2",
+			"name": "post cidade 2",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"cpf\": \"52365321458\",\r\n  \"senha\": \"jota22556\",\r\n  \"ativo\": 1\r\n}",
+					"raw": "{\r\n    \"nome\": \"niteroi\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -48,85 +50,38 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/logins",
+					"raw": "localhost:8080/estados/1/cidades",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"logins"
+						"estados",
+						"1",
+						"cidades"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "listando logins",
+			"name": "get cidades por paginacao",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/logins",
+					"raw": "localhost:8080/cidades?size=2",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"logins"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "listando login por id",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/logins/2",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"logins",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "listando login  por ordenacao",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8080/logins?sort=senha",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"logins"
+						"cidades"
 					],
 					"query": [
 						{
-							"key": "sort",
-							"value": "senha"
+							"key": "size",
+							"value": "2"
 						}
 					]
 				}
@@ -134,13 +89,32 @@
 			"response": []
 		},
 		{
-			"name": "atualizando login",
+			"name": "get cidades por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/cidades/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cidades",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put cidade",
 			"request": {
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 2,\r\n    \"cpf\": \"52365321458\",\r\n    \"senha\": \"jota22\",\r\n    \"ativo\": 1\r\n}",
+					"raw": "{\r\n   \"nome\": \"Duque de Caxias\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -148,13 +122,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/logins/2",
+					"raw": "localhost:8080/cidades/2",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"logins",
+						"cidades",
 						"2"
 					]
 				}
@@ -162,18 +136,18 @@
 			"response": []
 		},
 		{
-			"name": "deletando login",
+			"name": "delete cidade",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/logins/2",
+					"raw": "localhost:8080/cidades/2",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"logins",
+						"cidades",
 						"2"
 					]
 				}

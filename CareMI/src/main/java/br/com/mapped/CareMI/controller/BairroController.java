@@ -2,8 +2,12 @@ package br.com.mapped.CareMI.controller;
 import br.com.mapped.CareMI.dto.BairroDto.AtualizacaoBairroDto;
 import br.com.mapped.CareMI.dto.BairroDto.CadastroBairroDto;
 import br.com.mapped.CareMI.dto.BairroDto.DetalhesBairroDto;
+import br.com.mapped.CareMI.dto.LogradouroDto.CadastroLogradouroDto;
+import br.com.mapped.CareMI.dto.LogradouroDto.DetalhesLogradouroDto;
 import br.com.mapped.CareMI.model.Bairro;
+import br.com.mapped.CareMI.model.Logradouro;
 import br.com.mapped.CareMI.repository.BairroRepository;
+import br.com.mapped.CareMI.repository.LogradouroRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +22,9 @@ import java.util.List;
 public class BairroController {
     @Autowired
     private BairroRepository bairroRepository;
+
+    @Autowired
+    private LogradouroRepository logradouroRepository;
 
     //GET
     @GetMapping
@@ -34,16 +41,6 @@ public class BairroController {
         return ResponseEntity.ok(new DetalhesBairroDto(bairro));
     }
 
-    //POST
-    @PostMapping
-    @Transactional
-    public ResponseEntity<DetalhesBairroDto> post(@RequestBody @Valid CadastroBairroDto bairroDto,
-                                                       UriComponentsBuilder uriBuilder){
-        var bairro = new Bairro(bairroDto);
-        bairroRepository.save(bairro);
-        var uri = uriBuilder.path("bairros/{id}").buildAndExpand(bairro.getId()).toUri();
-        return ResponseEntity.created(uri).body(new DetalhesBairroDto(bairro));
-    }
 
     //DELETE
     @DeleteMapping("{id}")
@@ -62,4 +59,19 @@ public class BairroController {
         bairro.atualizarInformacoesBairro(dto);
         return ResponseEntity.ok(new DetalhesBairroDto(bairro));
     }
+
+    //relacionamentos
+    //POST LOGRADOUROS
+    @PostMapping("{id}/logradouros")
+    @Transactional
+    public ResponseEntity<DetalhesLogradouroDto> post(@PathVariable("id") Long id,
+                                                      @RequestBody @Valid CadastroLogradouroDto dto,
+                                                      UriComponentsBuilder uriBuilder){
+        var bairro = bairroRepository.getReferenceById(id);
+        var logradouro = new Logradouro(dto, bairro);
+        logradouroRepository.save(logradouro);
+        var uri = uriBuilder.path("logradouros/{id}").buildAndExpand(logradouro.getIdLogradouro()).toUri();
+        return ResponseEntity.created(uri).body(new DetalhesLogradouroDto(logradouro));
+    }
+
 }

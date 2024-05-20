@@ -1,19 +1,19 @@
 {
 	"info": {
-		"_postman_id": "61c33e6b-8679-47d3-97fb-677eaf42a864",
-		"name": "PacienteCareMI",
+		"_postman_id": "326299ea-fa39-4353-962f-d74f927e85f8",
+		"name": "Logradouros",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "29771037"
 	},
 	"item": [
 		{
-			"name": "criando paciente 1",
+			"name": "post logradouro 1",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"nome\": \"Gabriel Oliveira\",\r\n  \"peso\": 70,\r\n  \"altura\": 175,\r\n  \"grupoSanguineo\": \"A+\",\r\n  \"sexoBiologico\": \"MASCULINO\"\r\n}",
+					"raw": "{\r\n    \"nome\": \"Rua Garcia D'Ávila\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -21,26 +21,28 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/pacientes",
+					"raw": "localhost:8080/bairros/1/logradouros",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"pacientes"
+						"bairros",
+						"1",
+						"logradouros"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "criando paciente 2",
+			"name": "post logradouro 2",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"nome\": \"Maria Ferreira\",\r\n  \"peso\": 55,\r\n  \"altura\": 160,\r\n  \"grupoSanguineo\": \"O-\",\r\n  \"sexoBiologico\": \"FEMININO\"\r\n}",
+					"raw": "{\r\n    \"nome\": \"Rua Visconde de Pirajá\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -48,73 +50,38 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/pacientes",
+					"raw": "localhost:8080/bairros/1/logradouros",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"pacientes"
+						"bairros",
+						"1",
+						"logradouros"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "listando pacientes ",
+			"name": "get logradouro por paginacao",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/pacientes",
+					"raw": "localhost:8080/logradouros?size=2",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"pacientes"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "listando pacientes por id",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/pacientes/2",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"pacientes",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "listando pacientes por ordenacao",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/pacientes?sort=peso",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"pacientes"
+						"logradouros"
 					],
 					"query": [
 						{
-							"key": "sort",
-							"value": "peso"
+							"key": "size",
+							"value": "2"
 						}
 					]
 				}
@@ -122,13 +89,32 @@
 			"response": []
 		},
 		{
-			"name": "atualizando pacientes",
+			"name": "get logradouro por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/logradouros/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logradouros",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put logradouro",
 			"request": {
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"nome\": \"Maria Ferreira\",\r\n  \"peso\": 57,\r\n  \"altura\": 160,\r\n  \"grupoSanguineo\": \"O-\",\r\n  \"sexoBiologico\": \"FEMININO\"\r\n}",
+					"raw": "{\r\n    \"nome\": \"Visconde de Pirajá\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -136,13 +122,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/pacientes/2",
+					"raw": "localhost:8080/logradouros/2",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"pacientes",
+						"logradouros",
 						"2"
 					]
 				}
@@ -150,18 +136,18 @@
 			"response": []
 		},
 		{
-			"name": "deletando pacientes",
+			"name": "delete logradouro",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/pacientes/2",
+					"raw": "localhost:8080/logradouros/2",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"pacientes",
+						"logradouros",
 						"2"
 					]
 				}

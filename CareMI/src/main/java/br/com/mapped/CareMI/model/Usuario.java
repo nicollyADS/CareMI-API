@@ -21,7 +21,7 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario")
     @SequenceGenerator(name = "usuario", sequenceName = "seq_mi_usuario", allocationSize = 1)
     @Column(name="cdUsuario", length = 9)
-    private Long id;
+    private Long idUsuario;
 
     @Column(name="nmUsuario", length = 20, nullable = false)
     private String nome;
@@ -51,8 +51,21 @@ public class Usuario {
     @Column(name="fgAtivo", length = 1, nullable = false)
     private Integer ativo;
 
+    //relacionamentos
+    //usuario enderecoPaciente - UM pra um
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private EnderecoPaciente enderecoPaciente;
+
+    //usuario login - UM pra um
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private Login login;
+
+    //usuario paciente - UM pra um
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private Paciente paciente;
 
     public Usuario(CadastroUsuarioDto usuarioDto) {
+        //usuario
         nome = usuarioDto.nome();
         dataNascimento = usuarioDto.dataNascimento();
         cpf = usuarioDto.cpf();
@@ -62,9 +75,18 @@ public class Usuario {
         estadoCivil = usuarioDto.estadoCivil();
         profissao = usuarioDto.profissao();
         ativo = usuarioDto.ativo();
+
+        //login
+        login = new Login(usuarioDto);
+        login.setUsuario(this);
+
+        //enderecoPaciente
+        enderecoPaciente = new EnderecoPaciente(usuarioDto);
+        enderecoPaciente.setUsuario(this);
     }
 
     public void atualizarInformacoesUsuario(AtualizacaoUsuarioDto dto) {
+        //usuario
         if (dto.nome() != null)
             nome = dto.nome();
         if (dto.dataNascimento() != null)
@@ -83,5 +105,21 @@ public class Usuario {
             profissao = dto.profissao();
         if (dto.ativo() != null)
             ativo = dto.ativo();
+
+        //login
+        if (dto.numCpf() != null)
+            this.login.setNumCpf(dto.numCpf());
+        if (dto.senha() != null)
+            this.login.setSenha(dto.senha());
+        if (dto.flagAtivo() != null)
+            this.login.setFlagAtivo(dto.flagAtivo());
+
+        //enderecoPaciente
+        if (dto.numLogradouro() != null)
+            this.enderecoPaciente.setNumLogradouro(dto.numLogradouro());
+        if (dto.pontoReferencia() != null)
+            this.enderecoPaciente.setPontoReferencia(dto.pontoReferencia());
+        if (dto.complemento() != null)
+            this.enderecoPaciente.setComplemento(dto.complemento());
     }
 }

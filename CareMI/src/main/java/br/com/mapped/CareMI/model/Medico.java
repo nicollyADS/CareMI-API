@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -20,7 +22,7 @@ public class Medico {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "medico")
     @SequenceGenerator(name = "medico", sequenceName = "seq_mi_medico", allocationSize = 1)
     @Column(name="cdMedico", length = 9)
-    private Long id;
+    private Long idMedico;
 
     @Column(name="nmMedico", length = 100, nullable = false)
     private String nome;
@@ -36,6 +38,12 @@ public class Medico {
 
     @Column(name="nrCelular", length = 15, nullable = false)
     private String celular;
+
+    //relacionamentos
+
+    //medico atendimeno - um pra muitos
+    @OneToMany(mappedBy = "medico")
+    private List<Atendimento> atendimentos;
 
     public Medico(CadastroMedicoDto medicoDto) {
         nome = medicoDto.nome();

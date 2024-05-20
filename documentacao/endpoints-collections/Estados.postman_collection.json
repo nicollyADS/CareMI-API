@@ -1,19 +1,19 @@
 {
 	"info": {
-		"_postman_id": "9db650f0-e984-4bbe-a382-d6cb56bf1c48",
-		"name": "EnderecoHospitalCareMI",
+		"_postman_id": "32782ef2-6ddd-43d1-82e6-90e19d78ac3b",
+		"name": "Estados",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "29771037"
 	},
 	"item": [
 		{
-			"name": "criando os enderecos 1",
+			"name": "post estado 1",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"logradouro\": 12500,\r\n  \"pontoReferencia\": \"proximo ao metro\",\r\n  \"complemento\": \"sem complemento\"\r\n}",
+					"raw": "{\r\n  \"nome\": \"São Paulo\",\r\n  \"sigla\": \"SP\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -21,26 +21,26 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/enderecos-hospitais",
+					"raw": "localhost:8080/estados",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"enderecos-hospitais"
+						"estados"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "criando os enderecos 2",
+			"name": "post estado 2",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"logradouro\": 1500,\r\n  \"pontoReferencia\": \"proximo ao carrefour\",\r\n  \"complemento\": \"Lado impar\"\r\n}",
+					"raw": "{\r\n  \"nome\": \"Rio de Janeiro\",\r\n  \"sigla\": \"RR\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -48,73 +48,36 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/enderecos-hospitais",
+					"raw": "localhost:8080/estados",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"enderecos-hospitais"
+						"estados"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "listando enderecos ",
+			"name": "get estado por paginacao",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/enderecos-hospitais",
+					"raw": "localhost:8080/estados?size=2",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"enderecos-hospitais"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "listando endereco por id",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/enderecos-hospitais/3",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"enderecos-hospitais",
-						"3"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "listando endereco por ordenacao",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/enderecos-hospitais?sort=complemento",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"enderecos-hospitais"
+						"estados"
 					],
 					"query": [
 						{
-							"key": "sort",
-							"value": "complemento"
+							"key": "size",
+							"value": "2"
 						}
 					]
 				}
@@ -122,13 +85,32 @@
 			"response": []
 		},
 		{
-			"name": "atualizando endereco",
+			"name": "get estado por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/estados/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"estados",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put estado",
 			"request": {
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"logradouro\": 12500,\r\n  \"pontoReferencia\": \"proximo ao metro\",\r\n  \"complemento\": \"lado A\"\r\n}",
+					"raw": "{\r\n  \"nome\": \"São Paulo\",\r\n  \"sigla\": \"SP\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -136,33 +118,33 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/enderecos-hospitais/3",
+					"raw": "localhost:8080/estados/2",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"enderecos-hospitais",
-						"3"
+						"estados",
+						"2"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "deletando endereco",
+			"name": "delete estado",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/enderecos-hospitais/4",
+					"raw": "localhost:8080/estados/2",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"enderecos-hospitais",
-						"4"
+						"estados",
+						"2"
 					]
 				}
 			},

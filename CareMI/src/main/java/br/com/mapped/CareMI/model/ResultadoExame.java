@@ -1,7 +1,6 @@
 package br.com.mapped.CareMI.model;
 
-import br.com.mapped.CareMI.dto.ResultadoExameDto.AtualizacaoResultadoExameDto;
-import br.com.mapped.CareMI.dto.ResultadoExameDto.CadastroResultadoExameDto;
+import br.com.mapped.CareMI.dto.ExameDto.CadastroExameDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,10 +19,10 @@ public class ResultadoExame {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "resultadoExame")
     @SequenceGenerator(name = "resultadoExame", sequenceName = "seq_mi_rs_exame", allocationSize = 1)
     @Column(name="cdResultado", length = 9)
-    private Long id;
+    private Long idResultadoExame;
 
     @Column(name="dsResultado", length = 500, nullable = false)
-    private String descricao;
+    private String descricaoExame;
 
     @Column(name="dsObservacoes", length = 100, nullable = false)
     private String observacao;
@@ -61,9 +60,14 @@ public class ResultadoExame {
     @Column(name="nrHormonioTrioEstimulanteTSH", length = 5, nullable = false)
     private Integer hormonioTrioestimulanteTSH;
 
+    //relacionamentos
+    //resultadoExame exame - um pra UM
+    @OneToOne
+    @JoinColumn(name = "cdExame", nullable = false)
+    private Exame exame;
 
-    public ResultadoExame(CadastroResultadoExameDto resultadoExameDto) {
-        descricao = resultadoExameDto.descricao();
+    public ResultadoExame(CadastroExameDto resultadoExameDto) {
+        descricaoExame = resultadoExameDto.descricaoExame();
         observacao = resultadoExameDto.observacao();
         resultado = resultadoExameDto.resultado();
         globulosVermelhos = resultadoExameDto.globulosVermelhos();
@@ -76,35 +80,6 @@ public class ResultadoExame {
         colesterolLDL = resultadoExameDto.colesterolLDL();
         teglicerides = resultadoExameDto.teglicerides();
         hormonioTrioestimulanteTSH = resultadoExameDto.hormonioTrioestimulanteTSH();
-    }
-
-    public void atualizarInformacoesResultadoExame(AtualizacaoResultadoExameDto dto) {
-        if (dto.descricao() != null)
-            descricao = dto.descricao();
-        if (dto.observacao() != null)
-            observacao = dto.observacao();
-        if (dto.resultado() != null)
-            resultado = dto.resultado();
-        if (dto.globulosVermelhos() != null)
-            globulosVermelhos = dto.globulosVermelhos();
-        if (dto.globulosBrancos() != null)
-            globulosBrancos = dto.globulosBrancos();
-        if (dto.plaquetas() != null)
-            plaquetas = dto.plaquetas();
-        if (dto.homoglobinaGlicada() != null)
-            homoglobinaGlicada = dto.homoglobinaGlicada();
-        if (dto.creatina() != null)
-            creatina = dto.creatina();
-        if (dto.colesterolTotal() != null)
-            colesterolTotal = dto.colesterolTotal();
-        if (dto.colesterolHDL() != null)
-            colesterolHDL = dto.colesterolHDL();
-        if (dto.colesterolLDL() != null)
-            colesterolLDL = dto.colesterolLDL();
-        if (dto.teglicerides() != null)
-            teglicerides = dto.teglicerides();
-        if (dto.hormonioTrioestimulanteTSH() != null)
-            hormonioTrioestimulanteTSH = dto.hormonioTrioestimulanteTSH();
     }
 
 

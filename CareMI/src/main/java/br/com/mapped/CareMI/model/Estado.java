@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -20,13 +22,20 @@ public class Estado {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "estado")
     @SequenceGenerator(name = "estado", sequenceName = "seq_mi_estado", allocationSize = 1)
     @Column(name="cdEstado", length = 6)
-    private Long id;
+    private Long idEstado;
 
     @Column(name="nmEstado", length = 30, nullable = false)
     private String nome;
 
     @Column(name="sgEstado", length = 3, nullable = false)
     private String sigla;
+
+    //relacionamentos
+
+    //estado cidade - um pra muitos
+    @OneToMany(mappedBy = "estado")
+    private List<Cidade> cidades;
+
 
     public Estado(CadastroEstadoDto estadolDto) {
         nome = estadolDto.nome();

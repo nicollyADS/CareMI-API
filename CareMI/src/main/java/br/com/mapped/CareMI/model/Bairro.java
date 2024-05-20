@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -21,7 +23,7 @@ public class Bairro {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bairro")
     @SequenceGenerator(name = "bairro", sequenceName = "seq_mi_bairro", allocationSize = 1)
     @Column(name="cdBairro", length = 7)
-    private Long id;
+    private Long idBairro;
 
     @Column(name="nmBairro", length = 100, nullable = false)
     private String nome;
@@ -33,10 +35,21 @@ public class Bairro {
     private String cep;
 
 
-    public Bairro(CadastroBairroDto bairroDto) {
+    //relacionamentos
+    //bairro logradouro - um pra muitos
+    @OneToMany(mappedBy = "bairro")
+    private List<Logradouro> logradouros;
+
+    //bairro cidade - muitos pra um
+    @ManyToOne
+    @JoinColumn(name="cdCidade", nullable = false)
+    private Cidade cidade;
+
+    public Bairro(CadastroBairroDto bairroDto, Cidade cidade) {
         nome = bairroDto.nome();
         zona = bairroDto.zona();
         cep= bairroDto.cep();
+        this.cidade = cidade;
     }
 
     public void atualizarInformacoesBairro(AtualizacaoBairroDto dto) {

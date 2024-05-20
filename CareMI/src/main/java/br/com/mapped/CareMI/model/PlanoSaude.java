@@ -9,6 +9,7 @@ import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -22,7 +23,7 @@ public class PlanoSaude {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "planoSaude")
     @SequenceGenerator(name = "planoSaude", sequenceName = "seq_mi_pl_saude", allocationSize = 1)
     @Column(name="cdPlanoSaude", length = 9)
-    private Long id;
+    private Long idPlanoSaude;
 
     @Column(name="dsRazaoSocial", length = 100, nullable = false)
     private String razaoSocial;
@@ -44,6 +45,11 @@ public class PlanoSaude {
 
     @Column(name="fgAtivo", length = 1, nullable = false)
     private Integer ativo;
+
+    //relacionamentos
+    //planoSaude pacientePlanoSaude - um pra muitos
+    @OneToMany(mappedBy = "planoSaude")
+    private List<PacientePlanoSaude> pacientePlanoSaudes;
 
     public PlanoSaude(CadastroPlanoSaudeDto planoSaudeDto) {
         razaoSocial = planoSaudeDto.razaoSocial();

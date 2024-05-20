@@ -14,6 +14,14 @@ public record AtualizacaoPacientePlanoSaudeDto(
         LocalDate dataInicio,
 
         @NotNull(message = "A data final não pode ser nula")
-        LocalDate dataFim
+        LocalDate dataFim,
+
+        @NotNull(message = "O id do plano de saúde não pode ser nulo")
+        Long idPlanoSaude,
+
+        @NotNull(message = "O id do paciente não pode ser nulo")
+        Long idPaciente
+
+
 ) {
 }

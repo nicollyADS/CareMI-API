@@ -1,7 +1,6 @@
 package br.com.mapped.CareMI.model;
 
-import br.com.mapped.CareMI.dto.EnderecoPacienteDto.AtualizacaoEnderecoPacienteDto;
-import br.com.mapped.CareMI.dto.EnderecoPacienteDto.CadastroEnderecoPacienteDto;
+import br.com.mapped.CareMI.dto.UsuarioDto.CadastroUsuarioDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,10 +19,10 @@ public class EnderecoPaciente {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "enderecoPaciente")
     @SequenceGenerator(name = "enderecoPaciente", sequenceName = "seq_mi_endereco_paciente", allocationSize = 1)
     @Column(name="cdEndereco", length = 9)
-    private Long id;
+    private Long idEnderecoPaciente;
 
     @Column(name="nrLogradouro", length = 7, nullable = false)
-    private Integer logradouro;
+    private Integer numLogradouro;
 
     @Column(name="dsPontoReferencia", length = 100, nullable = false)
     private String pontoReferencia;
@@ -31,20 +30,23 @@ public class EnderecoPaciente {
     @Column(name="dsComplemento", length = 100, nullable = false)
     private String complemento;
 
+    //relacionamentos
+    //enderecoPaciente usuario - um pra UM
+    @OneToOne
+    @JoinColumn(name = "cdUsuario", nullable = false)
+    private Usuario usuario;
 
-    public EnderecoPaciente(CadastroEnderecoPacienteDto enderecoPacienteDto) {
-        logradouro = enderecoPacienteDto.logradouro();
+    //enderecoPaciente logradouro - muitos pra um
+    @ManyToOne
+    @JoinColumn(name="cdLogradouro", nullable = false)
+    private Logradouro logradouro;
+
+
+    public EnderecoPaciente(CadastroUsuarioDto enderecoPacienteDto) {
+        numLogradouro = enderecoPacienteDto.numLogradouro();
         pontoReferencia = enderecoPacienteDto.pontoReferencia();
         complemento = enderecoPacienteDto.complemento();
     }
 
-    public void atualizarInformacoesEnderecoPaciente(AtualizacaoEnderecoPacienteDto dto) {
-        if (dto.logradouro() != null)
-            logradouro = dto.logradouro();
-        if (dto.pontoReferencia() != null)
-            pontoReferencia = dto.pontoReferencia();
-        if (dto.complemento() != null)
-            complemento = dto.complemento();
-    }
 }
 

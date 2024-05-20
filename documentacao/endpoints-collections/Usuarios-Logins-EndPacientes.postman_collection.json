@@ -1,0 +1,204 @@
+{
+	"info": {
+		"_postman_id": "6e74dc7b-8bd7-4d48-9dec-4edb8cd15105",
+		"name": "Usuarios-Logins-EndPacientes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29771037"
+	},
+	"item": [
+		{
+			"name": "post 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"João da Silva\",\r\n  \"dataNascimento\": \"1990-05-15\",\r\n  \"cpf\": \"12345678901\",\r\n  \"rg\": \"1234567\",\r\n  \"nacionalidade\": \"Brasileiro\",\r\n  \"dataCadastro\": \"2024-05-20\",\r\n  \"estadoCivil\": \"SOLTEIRO\",\r\n  \"profissao\": \"Engenheiro\",\r\n  \"ativo\": 1,\r\n  \"numCpf\": \"12345678901\",\r\n  \"senha\": \"senha123\",\r\n  \"flagAtivo\": 1,\r\n  \"numLogradouro\": 1555,\r\n  \"pontoReferencia\": \"Próximo à Praça da Luz\",\r\n  \"complemento\": \"Apartamento 301\",\r\n  \"idLogradouro\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/usuarios",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Maria Oliveira\",\r\n  \"dataNascimento\": \"1985-10-28\",\r\n  \"cpf\": \"98765432109\",\r\n  \"rg\": \"7654321\",\r\n  \"nacionalidade\": \"Brasileira\",\r\n  \"dataCadastro\": \"2024-05-20\",\r\n  \"estadoCivil\": \"CASADO\",\r\n  \"profissao\": \"Médico\",\r\n  \"ativo\": 1,\r\n  \"numCpf\": \"98765432109\",\r\n  \"senha\": \"ma1234\",\r\n  \"flagAtivo\": 1,\r\n  \"numLogradouro\": 456,\r\n  \"pontoReferencia\": \"Próximo ao Hospital Central\",\r\n  \"complemento\": \"Casa verde\",\r\n  \"idLogradouro\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/usuarios",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get por paginacao",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/usuarios?size=2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuarios"
+					],
+					"query": [
+						{
+							"key": "size",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/usuarios/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuarios",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put ",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Maria Oliveira\",\r\n  \"dataNascimento\": \"1985-10-28\",\r\n  \"cpf\": \"98765432109\",\r\n  \"rg\": \"7654321\",\r\n  \"nacionalidade\": \"Brasileira\",\r\n  \"dataCadastro\": \"2024-05-20\",\r\n  \"estadoCivil\": \"CASADO\",\r\n  \"profissao\": \"Médico\",\r\n  \"ativo\": 1,\r\n  \"numCpf\": \"98765432109\",\r\n  \"senha\": \"12556678\",\r\n  \"flagAtivo\": 1,\r\n  \"numLogradouro\": 456,\r\n  \"pontoReferencia\": \"Próximo ao Carrefour\",\r\n  \"complemento\": \"Casa verde\",\r\n  \"idLogradouro\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/usuarios/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuarios",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/usuarios/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuarios",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get por cpf",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/usuarios/por-cpf?cpf=12345678901",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuarios",
+						"por-cpf"
+					],
+					"query": [
+						{
+							"key": "cpf",
+							"value": "12345678901"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get por rg",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/usuarios/por-rg?rg=1234567",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuarios",
+						"por-rg"
+					],
+					"query": [
+						{
+							"key": "rg",
+							"value": "1234567"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
