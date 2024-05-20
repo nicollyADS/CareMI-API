@@ -22,7 +22,7 @@ public class Logradouro {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "logradouro")
     @SequenceGenerator(name = "logradouro", sequenceName = "seq_mi_logradouro", allocationSize = 1)
     @Column(name="cdLogradouro", length = 9)
-    private Long id;
+    private Long idLogradouro;
 
     @Column(name="nmRua", length = 100, nullable = false)
     private String nome;

@@ -22,7 +22,7 @@ public class Cidade {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cidade")
     @SequenceGenerator(name = "cidade", sequenceName = "seq_mi_cidade", allocationSize = 1)
     @Column(name="cdCidade", length = 6)
-    private Long id;
+    private Long idCidade;
 
     @Column(name="nmCidade", length = 100, nullable = false)
     private String nome;

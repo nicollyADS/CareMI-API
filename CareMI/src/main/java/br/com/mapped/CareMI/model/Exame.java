@@ -23,7 +23,7 @@ public class Exame {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "exame")
     @SequenceGenerator(name = "exame", sequenceName = "seq_mi_exame", allocationSize = 1)
     @Column(name="cdExame", length = 9)
-    private Long id;
+    private Long idExame;
 
     @Column(name="dtExame", nullable = false)
     private LocalDate data;

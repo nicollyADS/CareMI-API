@@ -4,7 +4,7 @@ import br.com.mapped.CareMI.model.Exame;
 
 import java.time.LocalDate;
 
-public record DetalhesExameDto(Long id, LocalDate data, String descricao,
+public record DetalhesExameDto(Long idExame, LocalDate data, String descricao,
                                String descricaoExame, String observacao, Integer resultado, Integer globulosVermelhos, Integer globulosBrancos,
                                Integer plaquetas, Integer homoglobinaGlicada, Integer creatina, Integer colesterolTotal, Integer colesterolHDL, Integer colesterolLDL,
                                Integer teglicerides, Integer hormonioTrioestimulanteTSH) {
@@ -12,7 +12,7 @@ public record DetalhesExameDto(Long id, LocalDate data, String descricao,
     public DetalhesExameDto(Exame exame) {
         this(
                 //exame
-                exame.getId(), exame.getData(), exame.getDescricao(),
+                exame.getIdExame(), exame.getData(), exame.getDescricao(),
                 //resultadoExame
                 exame.getResultadoExame().getDescricaoExame(), exame.getResultadoExame().getObservacao(), exame.getResultadoExame().getResultado(),
                 exame.getResultadoExame().getGlobulosVermelhos(), exame.getResultadoExame().getGlobulosBrancos(), exame.getResultadoExame().getPlaquetas(),

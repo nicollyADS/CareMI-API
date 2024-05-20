@@ -71,7 +71,7 @@ public class LogradouroController {
         var logradouro = logradouroRepository.getReferenceById(id);
         var endHospital = new EnderecoHospital(dto, logradouro);
         enderecoHospitalRepository.save(endHospital);
-        var uri = uriBuilder.path("enderecos-hospitais/{id}").buildAndExpand(endHospital.getId()).toUri();
+        var uri = uriBuilder.path("enderecos-hospitais/{id}").buildAndExpand(endHospital.getIdEnderecoHospital()).toUri();
         return ResponseEntity.created(uri).body(new DetalhesEnderecoHospitalDto(endHospital));
     }
 

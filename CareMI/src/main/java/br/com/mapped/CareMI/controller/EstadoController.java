@@ -48,7 +48,7 @@ public class EstadoController {
                                                   UriComponentsBuilder uriBuilder){
         var estado = new Estado(estadoDto);
         estadoRepository.save(estado);
-        var uri = uriBuilder.path("estados/{id}").buildAndExpand(estado.getId()).toUri();
+        var uri = uriBuilder.path("estados/{id}").buildAndExpand(estado.getIdEstado()).toUri();
         return ResponseEntity.created(uri).body(new DetalhesEstadoDto(estado));
     }
 
@@ -81,7 +81,7 @@ public class EstadoController {
         var estado = estadoRepository.getReferenceById(id);
         var cidade = new Cidade(dto, estado);
         cidadeRepository.save(cidade);
-        var uri = uriBuilder.path("cidades/{id}").buildAndExpand(cidade.getId()).toUri();
+        var uri = uriBuilder.path("cidades/{id}").buildAndExpand(cidade.getIdCidade()).toUri();
         return ResponseEntity.created(uri).body(new DetalhesCidadeDto(cidade));
     }
 }

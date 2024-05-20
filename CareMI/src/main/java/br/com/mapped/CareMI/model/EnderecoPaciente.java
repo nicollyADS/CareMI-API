@@ -19,7 +19,7 @@ public class EnderecoPaciente {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "enderecoPaciente")
     @SequenceGenerator(name = "enderecoPaciente", sequenceName = "seq_mi_endereco_paciente", allocationSize = 1)
     @Column(name="cdEndereco", length = 9)
-    private Long id;
+    private Long idEnderecoPaciente;
 
     @Column(name="nrLogradouro", length = 7, nullable = false)
     private Integer numLogradouro;

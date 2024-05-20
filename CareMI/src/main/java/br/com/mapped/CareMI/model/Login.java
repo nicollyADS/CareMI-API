@@ -20,7 +20,7 @@ public class Login {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "login")
     @SequenceGenerator(name = "login", sequenceName = "seq_mi_login", allocationSize = 1)
     @Column(name="cdLogin", length = 9)
-    private Long id;
+    private Long idLogin;
 
     @Column(name="nrCpf", length = 15, nullable = false)
     private String numCpf;

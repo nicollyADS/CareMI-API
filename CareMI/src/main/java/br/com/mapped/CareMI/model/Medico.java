@@ -22,7 +22,7 @@ public class Medico {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "medico")
     @SequenceGenerator(name = "medico", sequenceName = "seq_mi_medico", allocationSize = 1)
     @Column(name="cdMedico", length = 9)
-    private Long id;
+    private Long idMedico;
 
     @Column(name="nmMedico", length = 100, nullable = false)
     private String nome;

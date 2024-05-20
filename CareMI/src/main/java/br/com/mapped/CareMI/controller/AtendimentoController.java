@@ -3,8 +3,11 @@ import br.com.mapped.CareMI.dto.AtendimentoDto.AtualizacaoAtendimentoDto;
 import br.com.mapped.CareMI.dto.AtendimentoDto.CadastroAtendimentoDto;
 import br.com.mapped.CareMI.dto.ExameDto.CadastroExameDto;
 import br.com.mapped.CareMI.dto.ExameDto.DetalhesExameDto;
+import br.com.mapped.CareMI.dto.PacientePlanoSaudeDto.CadastroPacientePlanoSaudeDto;
+import br.com.mapped.CareMI.dto.PacientePlanoSaudeDto.DetalhesPacientePlanoSaudeDto;
 import br.com.mapped.CareMI.model.Atendimento;
 import br.com.mapped.CareMI.model.Exame;
+import br.com.mapped.CareMI.model.PacientePlanoSaude;
 import br.com.mapped.CareMI.repository.AtendimentoRepository;
 import br.com.mapped.CareMI.dto.AtendimentoDto.DetalhesAtendimentoDto;
 import br.com.mapped.CareMI.repository.ExameRepository;
@@ -27,7 +30,15 @@ public class AtendimentoController {
     @Autowired
     private AtendimentoRepository atendimentoRepository;
 
+    @Autowired
     private ExameRepository exameRepository;
+
+    @Autowired
+    private MedicoRepository medicoRepository;
+
+    @Autowired
+    private PacienteRepository pacienteRepository;
+
 
 
     //GET
@@ -48,13 +59,20 @@ public class AtendimentoController {
     //POST
     @PostMapping
     @Transactional
-    public ResponseEntity<DetalhesAtendimentoDto> post(@RequestBody @Valid CadastroAtendimentoDto atendimentoDto,
-                                                    UriComponentsBuilder uriBuilder){
-        var atendimento = new Atendimento(atendimentoDto);
-        atendimentoRepository.save(atendimento);
-        var uri = uriBuilder.path("atendimentos/{id}").buildAndExpand(atendimento.getId()).toUri();
+    public ResponseEntity<DetalhesAtendimentoDto> cadastrar(@RequestBody @Valid CadastroAtendimentoDto dto, UriComponentsBuilder builder) {
+        var atendimento = new Atendimento(dto);
+        var medico = medicoRepository.getReferenceById(dto.idMedico());
+        var paciente = pacienteRepository.getReferenceById(dto.idPaciente());
+
+        atendimento.setMedico(medico);
+        atendimento.setPaciente(paciente);
+
+
+        atendimento = atendimentoRepository.save(atendimento);
+        var uri = builder.path("atendimentos/{id}").buildAndExpand(atendimento.getIdAtendimento()).toUri();
         return ResponseEntity.created(uri).body(new DetalhesAtendimentoDto(atendimento));
     }
+
 
     //DELETE
     @DeleteMapping("{id}")
@@ -85,7 +103,7 @@ public class AtendimentoController {
         var atendimento = atendimentoRepository.getReferenceById(id);
         var exame = new Exame(dto, atendimento);
         exameRepository.save(exame);
-        var uri = uriBuilder.path("exames/{id}").buildAndExpand(exame.getId()).toUri();
+        var uri = uriBuilder.path("exames/{id}").buildAndExpand(exame.getIdExame()).toUri();
         return ResponseEntity.created(uri).body(new DetalhesExameDto(exame));
     }
 

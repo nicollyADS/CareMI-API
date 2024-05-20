@@ -23,7 +23,7 @@ public class Atendimento {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "atendimento")
     @SequenceGenerator(name = "atendimento", sequenceName = "seq_mi_atendimento", allocationSize = 1)
     @Column(name="cdAtendimento", length = 9)
-    private Long id;
+    private Long idAtendimento;
 
     @Column(name="dsDescricao", length = 500, nullable = false)
     private String descricao;

@@ -3,9 +3,11 @@ import br.com.mapped.CareMI.dto.UsuarioDto.AtualizacaoUsuarioDto;
 import br.com.mapped.CareMI.dto.UsuarioDto.CadastroUsuarioDto;
 import br.com.mapped.CareMI.dto.UsuarioDto.DetalhesUsuarioDto;
 import br.com.mapped.CareMI.model.Usuario;
+import br.com.mapped.CareMI.repository.LogradouroRepository;
 import br.com.mapped.CareMI.repository.UsuarioRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +21,9 @@ import java.util.List;
 public class UsuarioController {
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private LogradouroRepository logradouroRepository;
 
     //GET
     @GetMapping
@@ -38,11 +43,12 @@ public class UsuarioController {
     //POST
     @PostMapping
     @Transactional
-    public ResponseEntity<DetalhesUsuarioDto> post(@RequestBody @Valid CadastroUsuarioDto usuarioDto,
-                                                  UriComponentsBuilder uriBuilder){
-        var usuario = new Usuario(usuarioDto);
-        usuarioRepository.save(usuario);
-        var uri = uriBuilder.path("usuarios/{id}").buildAndExpand(usuario.getId()).toUri();
+    public ResponseEntity<DetalhesUsuarioDto> cadastrar(@RequestBody @Valid CadastroUsuarioDto dto, UriComponentsBuilder builder) {
+        var usuario = new Usuario(dto);
+        var logradouro = logradouroRepository.getReferenceById(dto.idLogradouro());
+        usuario.getEnderecoPaciente().setLogradouro(logradouro);
+        usuario = usuarioRepository.save(usuario);
+        var uri = builder.path("/usuarios/{id}").buildAndExpand(usuario.getIdUsuario()).toUri();
         return ResponseEntity.created(uri).body(new DetalhesUsuarioDto(usuario));
     }
 
@@ -63,4 +69,9 @@ public class UsuarioController {
         usuario.atualizarInformacoesUsuario(dto);
         return ResponseEntity.ok(new DetalhesUsuarioDto(usuario));
     }
+
+
+
+
+
 }

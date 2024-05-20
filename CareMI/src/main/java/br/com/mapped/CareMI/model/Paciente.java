@@ -22,7 +22,7 @@ public class Paciente {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "paciente")
     @SequenceGenerator(name = "paciente", sequenceName = "seq_mi_paciente", allocationSize = 1)
     @Column(name="cdPaciente", length = 9)
-    private Long id;
+    private Long idPaciente;
 
     @Column(name="nmPaciente", length = 100, nullable = false)
     private String nome;
@@ -55,7 +55,7 @@ public class Paciente {
     private Carteirinha carteirinha;
 
     //paciente pacientePlanoSaude - um pra muitos
-    @OneToMany(mappedBy = "paciente")
+    @OneToMany(mappedBy = "paciente", cascade =  CascadeType.ALL)
     private List<PacientePlanoSaude> pacientePlanoSaudes;
 
 

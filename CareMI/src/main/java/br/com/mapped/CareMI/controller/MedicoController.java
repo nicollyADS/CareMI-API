@@ -41,7 +41,7 @@ public class MedicoController {
                                                   UriComponentsBuilder uriBuilder){
         var medico = new Medico(medicoDto);
         medicoRepository.save(medico);
-        var uri = uriBuilder.path("medicos/{id}").buildAndExpand(medico.getId()).toUri();
+        var uri = uriBuilder.path("medicos/{id}").buildAndExpand(medico.getIdMedico()).toUri();
         return ResponseEntity.created(uri).body(new DetalhesMedicoDto(medico));
     }
 

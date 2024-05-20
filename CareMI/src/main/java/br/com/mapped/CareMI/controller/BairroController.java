@@ -70,7 +70,7 @@ public class BairroController {
         var bairro = bairroRepository.getReferenceById(id);
         var logradouro = new Logradouro(dto, bairro);
         logradouroRepository.save(logradouro);
-        var uri = uriBuilder.path("logradouros/{id}").buildAndExpand(logradouro.getId()).toUri();
+        var uri = uriBuilder.path("logradouros/{id}").buildAndExpand(logradouro.getIdLogradouro()).toUri();
         return ResponseEntity.created(uri).body(new DetalhesLogradouroDto(logradouro));
     }
 

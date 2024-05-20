@@ -5,12 +5,16 @@ import br.com.mapped.CareMI.dto.PacienteDto.DetalhesPacienteDto;
 import br.com.mapped.CareMI.dto.PacientePlanoSaudeDto.CadastroPacientePlanoSaudeDto;
 import br.com.mapped.CareMI.dto.PacientePlanoSaudeDto.DetalhesPacientePlanoSaudeDto;
 import br.com.mapped.CareMI.dto.PlanoSaudeDto.CadastroPlanoSaudeDto;
+import br.com.mapped.CareMI.dto.UsuarioDto.CadastroUsuarioDto;
+import br.com.mapped.CareMI.dto.UsuarioDto.DetalhesUsuarioDto;
 import br.com.mapped.CareMI.model.Paciente;
 import br.com.mapped.CareMI.model.PacientePlanoSaude;
 import br.com.mapped.CareMI.model.PlanoSaude;
+import br.com.mapped.CareMI.model.Usuario;
 import br.com.mapped.CareMI.repository.PacientePlanoSaudeRepository;
 import br.com.mapped.CareMI.repository.PacienteRepository;
 import br.com.mapped.CareMI.repository.PlanoSaudeRepository;
+import br.com.mapped.CareMI.repository.UsuarioRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -32,6 +36,9 @@ public class PacienteController {
     @Autowired
     private PlanoSaudeRepository planoSaudeRepository;
 
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
     //GET
     @GetMapping
     public ResponseEntity<List<DetalhesPacienteDto>> get(Pageable pageable){
@@ -50,11 +57,12 @@ public class PacienteController {
     //POST
     @PostMapping
     @Transactional
-    public ResponseEntity<DetalhesPacienteDto> post(@RequestBody @Valid CadastroPacienteDto pacienteDto,
-                                                  UriComponentsBuilder uriBuilder){
-        var paciente = new Paciente(pacienteDto);
-        pacienteRepository.save(paciente);
-        var uri = uriBuilder.path("pacientes/{id}").buildAndExpand(paciente.getId()).toUri();
+    public ResponseEntity<DetalhesPacienteDto> cadastrar(@RequestBody @Valid CadastroPacienteDto dto, UriComponentsBuilder builder) {
+        var paciente = new Paciente(dto);
+        var usuario = usuarioRepository.getReferenceById(dto.idUsuario());
+        paciente.setUsuario(usuario);
+        paciente = pacienteRepository.save(paciente);
+        var uri = builder.path("/pacientes/{id}").buildAndExpand(paciente.getIdPaciente()).toUri();
         return ResponseEntity.created(uri).body(new DetalhesPacienteDto(paciente));
     }
 
@@ -75,4 +83,7 @@ public class PacienteController {
         paciente.atualizarInformacoesPaciente(dto);
         return ResponseEntity.ok(new DetalhesPacienteDto(paciente));
     }
+
+
+
 }

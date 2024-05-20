@@ -19,7 +19,7 @@ public class ResultadoExame {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "resultadoExame")
     @SequenceGenerator(name = "resultadoExame", sequenceName = "seq_mi_rs_exame", allocationSize = 1)
     @Column(name="cdResultado", length = 9)
-    private Long id;
+    private Long idResultadoExame;
 
     @Column(name="dsResultado", length = 500, nullable = false)
     private String descricaoExame;

@@ -20,7 +20,7 @@ public class EnderecoHospital {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "enderecoHospital")
     @SequenceGenerator(name = "enderecoHospital", sequenceName = "seq_mi_endereco_hospital", allocationSize = 1)
     @Column(name="cdEndereco", length = 9)
-    private Long id;
+    private Long idEnderecoHospital;
 
     @Column(name="nrLogradouro", length = 7, nullable = false)
     private Integer numLogradouro;

@@ -22,7 +22,7 @@ public class PacientePlanoSaude {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pacientePlanoSaude")
     @SequenceGenerator(name = "pacientePlanoSaude", sequenceName = "seq_mi_pac_pl_saude", allocationSize = 1)
     @Column(name="cdPlanoPaciente", length = 9)
-    private Long id;
+    private Long idPacientePlanoSaude;
 
     @Column(name="nrCarteira", length = 15, nullable = false)
     private Long carteira;

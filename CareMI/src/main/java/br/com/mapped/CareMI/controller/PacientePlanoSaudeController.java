@@ -1,9 +1,14 @@
 package br.com.mapped.CareMI.controller;
+import br.com.mapped.CareMI.dto.PacienteDto.CadastroPacienteDto;
+import br.com.mapped.CareMI.dto.PacienteDto.DetalhesPacienteDto;
 import br.com.mapped.CareMI.dto.PacientePlanoSaudeDto.AtualizacaoPacientePlanoSaudeDto;
 import br.com.mapped.CareMI.dto.PacientePlanoSaudeDto.CadastroPacientePlanoSaudeDto;
 import br.com.mapped.CareMI.dto.PacientePlanoSaudeDto.DetalhesPacientePlanoSaudeDto;
+import br.com.mapped.CareMI.model.Paciente;
 import br.com.mapped.CareMI.model.PacientePlanoSaude;
 import br.com.mapped.CareMI.repository.PacientePlanoSaudeRepository;
+import br.com.mapped.CareMI.repository.PacienteRepository;
+import br.com.mapped.CareMI.repository.PlanoSaudeRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -19,6 +24,12 @@ import java.util.List;
 public class PacientePlanoSaudeController {
     @Autowired
     private PacientePlanoSaudeRepository pacientePlanoSaudeRepository;
+
+    @Autowired
+    private PlanoSaudeRepository planoSaudeRepository;
+
+    @Autowired
+    private PacienteRepository pacienteRepository;
 
     //GET
     @GetMapping
@@ -38,11 +49,17 @@ public class PacientePlanoSaudeController {
     //POST
     @PostMapping
     @Transactional
-    public ResponseEntity<DetalhesPacientePlanoSaudeDto> post(@RequestBody @Valid CadastroPacientePlanoSaudeDto pacientePlanoSaudeDto,
-                                                  UriComponentsBuilder uriBuilder){
-        var pacientePlanoSaude = new PacientePlanoSaude(pacientePlanoSaudeDto);
-        pacientePlanoSaudeRepository.save(pacientePlanoSaude);
-        var uri = uriBuilder.path("pacientes-plano-saude/{id}").buildAndExpand(pacientePlanoSaude.getId()).toUri();
+    public ResponseEntity<DetalhesPacientePlanoSaudeDto> cadastrar(@RequestBody @Valid CadastroPacientePlanoSaudeDto dto, UriComponentsBuilder builder) {
+        var pacientePlanoSaude = new PacientePlanoSaude(dto);
+        var planoSaude = planoSaudeRepository.getReferenceById(dto.idPlanoSaude());
+        var paciente = pacienteRepository.getReferenceById(dto.idPaciente());
+
+        pacientePlanoSaude.setPlanoSaude(planoSaude);
+        pacientePlanoSaude.setPaciente(paciente);
+
+
+        pacientePlanoSaude = pacientePlanoSaudeRepository.save(pacientePlanoSaude);
+        var uri = builder.path("pacientes-planos-saude/{id}").buildAndExpand(pacientePlanoSaude.getIdPacientePlanoSaude()).toUri();
         return ResponseEntity.created(uri).body(new DetalhesPacientePlanoSaudeDto(pacientePlanoSaude));
     }
 
@@ -63,4 +80,5 @@ public class PacientePlanoSaudeController {
         pacientePlanoSaude.atualizarInformacoesPacientePlanoSaude(dto);
         return ResponseEntity.ok(new DetalhesPacientePlanoSaudeDto(pacientePlanoSaude));
     }
+
 }

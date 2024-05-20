@@ -20,7 +20,7 @@ public class Carteirinha {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "carteirinha")
     @SequenceGenerator(name = "carteirinha", sequenceName = "seq_mi_carteirinha", allocationSize = 1)
     @Column(name="cdCarteirinha", length = 9)
-    private Long id;
+    private Long idCarteirinha;
 
     @Column(name="nmPaciente", length = 100, nullable = false)
     private String nomePaciente;

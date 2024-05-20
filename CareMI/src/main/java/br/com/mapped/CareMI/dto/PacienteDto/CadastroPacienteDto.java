@@ -24,6 +24,9 @@ public record CadastroPacienteDto(
         @NotNull(message = "O sexo biológico não pode estar em branco")
         SexoBiologico sexoBiologico,
 
+        @NotNull(message = "O id do usuario não pode estar em branco")
+        Long idUsuario,
+
         //carteirinha
         @NotBlank(message = "O nome não pode estar em branco")
         @Size(max = 100, message = "O nome deve ter no máximo 100 caracteres")

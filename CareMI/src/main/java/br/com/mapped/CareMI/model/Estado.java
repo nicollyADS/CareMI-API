@@ -22,7 +22,7 @@ public class Estado {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "estado")
     @SequenceGenerator(name = "estado", sequenceName = "seq_mi_estado", allocationSize = 1)
     @Column(name="cdEstado", length = 6)
-    private Long id;
+    private Long idEstado;
 
     @Column(name="nmEstado", length = 30, nullable = false)
     private String nome;

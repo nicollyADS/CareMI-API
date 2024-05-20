@@ -32,5 +32,12 @@ public record CadastroAtendimentoDto(
         @NotNull(message = "O campo 'ativo' não pode ser nulo")
         @PositiveOrZero(message = "O campo 'ativo' deve ser um número positivo ou zero")
         @Max(value = 1, message = "o campo ativo deve conter apenas 1 caractere")
-        Integer ativo) {
+        Integer ativo,
+
+        @NotNull(message = "O id do médico não pode ser nulo")
+        Long idMedico,
+
+        @NotNull(message = "O id do paciente não pode ser nulo")
+        Long idPaciente
+) {
 }

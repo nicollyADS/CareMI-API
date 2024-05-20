@@ -72,7 +72,7 @@ public class CidadeController {
         var cidade = cidadeRepository.getReferenceById(id);
         var bairro = new Bairro(dto, cidade);
         bairroRepository.save(bairro);
-        var uri = uriBuilder.path("bairro/{id}").buildAndExpand(bairro.getId()).toUri();
+        var uri = uriBuilder.path("bairro/{id}").buildAndExpand(bairro.getIdBairro()).toUri();
         return ResponseEntity.created(uri).body(new DetalhesBairroDto(bairro));
     }
 

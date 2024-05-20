@@ -64,7 +64,10 @@ public record AtualizacaoUsuarioDto(
         String pontoReferencia,
 
         @Size(max = 100, message = "O complemento deve ter no máximo 100 caracteres")
-        String complemento
+        String complemento,
+
+        @NotNull(message = "O id do logradouro não pode ser nulo, informe um id existente")
+        Long idLogradouro
 
 ) {
 }

@@ -47,7 +47,7 @@ public class PlanoSaudeController {
                                                   UriComponentsBuilder uriBuilder){
         var planoSaude = new PlanoSaude(planoSaudeDto);
         planoSaudeRepository.save(planoSaude);
-        var uri = uriBuilder.path("planos-saude/{id}").buildAndExpand(planoSaude.getId()).toUri();
+        var uri = uriBuilder.path("planos-saude/{id}").buildAndExpand(planoSaude.getIdPlanoSaude()).toUri();
         return ResponseEntity.created(uri).body(new DetalhesPlanoSaudeDto(planoSaude));
     }
 
