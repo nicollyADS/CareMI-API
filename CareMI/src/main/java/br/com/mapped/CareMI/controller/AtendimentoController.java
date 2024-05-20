@@ -14,6 +14,7 @@ import br.com.mapped.CareMI.repository.ExameRepository;
 import br.com.mapped.CareMI.repository.MedicoRepository;
 import br.com.mapped.CareMI.repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -105,6 +106,20 @@ public class AtendimentoController {
         exameRepository.save(exame);
         var uri = uriBuilder.path("exames/{id}").buildAndExpand(exame.getIdExame()).toUri();
         return ResponseEntity.created(uri).body(new DetalhesExameDto(exame));
+    }
+
+    //BUSCAR ATENDIMENTOS POR MÉDICO
+    @GetMapping("por-medico")
+    public ResponseEntity<Page<DetalhesAtendimentoDto>> getMedico(@RequestParam("id-medico") Long id, Pageable pageable){
+        var page = atendimentoRepository.findByMedico(id, pageable).map(DetalhesAtendimentoDto::new);
+        return ResponseEntity.ok(page);
+    }
+
+    //BUSCAR ATENDIMENTOS POR PACIENTE
+    @GetMapping("por-paciente")
+    public ResponseEntity<Page<DetalhesAtendimentoDto>> getPaciente(@RequestParam("id-paciente") Long id, Pageable pageable){
+        var page = atendimentoRepository.findByNome(id, pageable).map(DetalhesAtendimentoDto::new);
+        return ResponseEntity.ok(page);
     }
 
 }
