@@ -1,6 +1,6 @@
 # Aplicação: CareMI
 
-### Link do Repositório: https://github.com/Miguel-Fr3/CareMI-API
+### Link do Repositório: https://github.com/nicollyADS/CareMI-API
 
 ### Integrantes do Grupo
 - **Nome:** Alberto Seiji Assato - rm99977
@@ -8,13 +8,13 @@
 problemas que a aplicação se propõe a solucionar.
 
 - **Nome:** Matheus Rodrigues Oliveira - rm551997
-  - **Apresentação:** Responsável pela criação do diagrama de entidade e relacionamento (DER).
+  - **Apresentação:** Responsável pela criação do diagrama de entidade e relacionamento (DER) e Modelo Entidade Relacionamento (MER).
 
 - **Nome:** Miguel Francisco de Freitas Fernandes - rm99997 
   - **Apresentação:** Responsável pela inicialização do repositório e criação da documentação do cronograma de desenvolvimento.
 
 - **Nome:** Nicolly de Almeida Gonçalves - rm552579
-  - **Apresentação:** Responsável por criar o diagrama de classes, realizar a implementação das models, controllers, repositories e data object transfer (DTO). Além de efetuar o mapeamento e a validação das classes.
+  - **Apresentação:** Responsável por criar o diagrama de classes, realizar a implementação das models, controllers, repositories e data object transfer (DTO). Além de efetuar o mapeamento dos relacionamentos, validação das classes e criação de queries.
 
 - **Nome:** Patrick de Lima Jaguski - rm551521
   - **Apresentação:** Responsável pela produção e postagem do vídeo com a proposta tecnológica, o público-alvo da aplicação e os
@@ -62,6 +62,9 @@ Assista ao vídeo de apresentação da proposta tecnológica, público-alvo e pr
 - **PUT:** `/atendimentos/{id}` - atualiza as informações do atendimento com o id que foi passado
 - **POST:** `/atendimentos` - cria um atendimento
 - **DELETE:** `/atendimentos/{id}` - deleta um atendimento
+- **POST EXAME:** `/atendimentos/{id}/exames` - adiciona um exame a um atendimento existente
+- **GET ATENDIMENTOS POR MÉDICO:** `/atendimentos/por-medico` - lista os atendimentos filtrados por médico, fornecendo o parametro `id-medico`
+- **GET ATENDIMENTOS POR PACIENTE:** `/atendimentos/por-paciente` - lista os atendimentos filtrados por paciente `id-paciente`
 
 **Bairro**
 - **GET:** `/bairros` - lista todos os bairros
@@ -69,13 +72,7 @@ Assista ao vídeo de apresentação da proposta tecnológica, público-alvo e pr
 - **PUT:** `/bairros/{id}` - atualiza as informações do bairro com o id que foi passado
 - **POST:** `/bairros` - cria um bairro
 - **DELETE:** `/bairros/{id}` - deleta um bairro
-
-**Carteirinha**
-- **GET:** `/carteirinhas` - lista todas as carteirinhas
-- **GET BY ID:** `/carteirinhas/{id}` - lista a carteirinha com o id que foi passado
-- **PUT:** `/carteirinhas/{id}` - atualiza as informações da carteirinha com o id que foi passado
-- **POST:** `/carteirinhas` - cria uma carteirinha
-- **DELETE:** `/carteirinhas/{id}` - deleta uma carteirinha
+- **POST LOGRADOUROS:** `/bairros/{id}/logradouros` - adiciona um logradouro a um bairro existente
 
 **Cidade**
 - **GET:** `/cidades` - lista todas as cidades
@@ -83,20 +80,13 @@ Assista ao vídeo de apresentação da proposta tecnológica, público-alvo e pr
 - **PUT:** `/cidades/{id}` - atualiza as informações da cidade com o id que foi passado
 - **POST:** `/cidades` - cria uma cidade
 - **DELETE:** `/cidades/{id}` - deleta uma cidade
+- **POST BAIRRO:** `/cidades/{id}/bairros` - adiciona um bairro a uma cidade existente
 
 **Endereco Hospital**
 - **GET:** `/enderecos-hospitais` - lista todos os endereços de hospitais
 - **GET BY ID:** `/enderecos-hospitais/{id}` - lista o endereço de hospital com o id que foi passado
 - **PUT:** `/enderecos-hospitais/{id}` - atualiza as informações do endereço de hospital com o id que foi passado
-- **POST:** `/enderecos-hospitais` - cria um endereço de hospital
 - **DELETE:** `/enderecos-hospitais/{id}` - deleta um endereço de hospital
-
-**Endereco Paciente**
-- **GET:** `/enderecos-pacientes` - lista todos os endereços de pacientes
-- **GET BY ID:** `/enderecos-pacientes/{id}` - lista o endereço de paciente com o id que foi passado
-- **PUT:** `/enderecos-pacientes/{id}` - atualiza as informações do endereço de paciente com o id que foi passado
-- **POST:** `/enderecos-pacientes` - cria um endereço de paciente
-- **DELETE:** `/enderecos-pacientes/{id}` - deleta um endereço de paciente
 
 **Estado**
 - **GET:** `/estados` - lista todos os estados
@@ -104,6 +94,7 @@ Assista ao vídeo de apresentação da proposta tecnológica, público-alvo e pr
 - **PUT:** `/estados/{id}` - atualiza as informações do estado com o id que foi passado
 - **POST:** `/estados` - cria um estado
 - **DELETE:** `/estados/{id}` - deleta um estado
+- **POST CIDADE:** `/estados/{id}/cidades` - adiciona uma cidade a um estado existente
 
 **Exame**
 - **GET:** `/exames` - lista todos os exames
@@ -111,20 +102,14 @@ Assista ao vídeo de apresentação da proposta tecnológica, público-alvo e pr
 - **PUT:** `/exames/{id}` - atualiza as informações do exame com o id que foi passado
 - **POST:** `/exames` - cria um exame
 - **DELETE:** `/exames/{id}` - deleta um exame
-
-**Login**
-- **GET:** `/logins` - lista todos os logins
-- **GET BY ID:** `/logins/{id}` - lista o login com o id que foi passado
-- **PUT:** `/logins/{id}` - atualiza as informações do login com o id que foi passado
-- **POST:** `/logins` - cria um login
-- **DELETE:** `/logins/{id}` - deleta um login
+- **GET EXAMES POR DATA:** `/exames/por-data` - lista os exames agendados para uma data específica, fornecendo o parâmetro `data`
 
 **Logradouro**
 - **GET:** `/logradouros` - lista todos os logradouros
 - **GET BY ID:** `/logradouros/{id}` - lista o logradouro com o id que foi passado
 - **PUT:** `/logradouros/{id}` - atualiza as informações do logradouro com o id que foi passado
-- **POST:** `/logradouros` - cria um logradouro
-- **DELETE:** `/logradouros/{id}` - deleta um logradouro
+- **DELETE:** `/logradouros/{id}` - deleta o logradouro
+- **POST ENDERECO HOSPITAL:** `/logradouros/{id}/enderecos-hospitais` - adiciona um novo endereço de hospital ao logradouro especificado
 
 **Medico**
 - **GET:** `/medicos` - lista todos os médicos
@@ -133,12 +118,13 @@ Assista ao vídeo de apresentação da proposta tecnológica, público-alvo e pr
 - **POST:** `/medicos` - cria um médico
 - **DELETE:** `/medicos/{id}` - deleta um médico
 
-**Paciente**
+**Pacientes**
 - **GET:** `/pacientes` - lista todos os pacientes
-- **GET BY ID:** `/pacientes/{id}` - lista o paciente com o id que foi passado
-- **PUT:** `/pacientes/{id}` - atualiza as informações do paciente com o id que foi passado
-- **POST:** `/pacientes` - cria um paciente
-- **DELETE:** `/pacientes/{id}` - deleta um paciente
+- **GET BY ID:** `/pacientes/{id}` - lista o paciente com o ID que foi passado
+- **POST:** `/pacientes` - cadastra um novo paciente
+- **DELETE:** `/pacientes/{id}` - deleta o paciente
+- **PUT:** `/pacientes/{id}` - atualiza as informações do paciente com o ID que foi passado
+- **GET PACIENTES POR NOME:** `/pacientes/por-nome` - busca pacientes pelo nome, fornecendo o parâmetro `nome`
 
 **Paciente Plano de Saude**
 - **GET:** `/pacientes-planos-saude` - lista todos os pacientes com plano de saúde
@@ -154,17 +140,12 @@ Assista ao vídeo de apresentação da proposta tecnológica, público-alvo e pr
 - **POST:** `/planos-saude` - cria um plano de saúde
 - **DELETE:** `/planos-saude/{id}` - deleta um plano de saúde
 
-**Resultado**
-- **GET:** `/resultados` - lista todos os resultados
-- **GET BY ID:** `/resultados/{id}` - lista o resultado com o id que foi passado
-- **PUT:** `/resultados/{id}` - atualiza as informações do resultado com o id que foi passado
-- **POST:** `/resultados` - cria um resultado
-- **DELETE:** `/resultados/{id}` - deleta um resultado
-
-**Usuario**
+**Usuários**
 - **GET:** `/usuarios` - lista todos os usuários
 - **GET BY ID:** `/usuarios/{id}` - lista o usuário com o id que foi passado
+- **POST:** `/usuarios` - cadastra um novo usuário
+- **DELETE:** `/usuarios/{id}` - deleta o usuário com o id que foi passado
 - **PUT:** `/usuarios/{id}` - atualiza as informações do usuário com o id que foi passado
-- **POST:** `/usuarios` - cria um usuário
-- **DELETE:** `/usuarios/{id}` - deleta um usuário
+- **GET USUARIOS POR CPF:** `/usuarios/por-cpf` - busca usuários pelo CPF, fornecendo o parâmetro `cpf`
+- **GET USUARIOS POR RG:** `/usuarios/por-rg` - busca usuários pelo RG, fornecendo o parâmetro `rg`
 
