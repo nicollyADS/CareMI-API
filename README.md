@@ -147,5 +147,5 @@ Assista ao vídeo de apresentação da proposta tecnológica, público-alvo e pr
 - **DELETE:** `/usuarios/{id}` - deleta o usuário com o id que foi passado
 - **PUT:** `/usuarios/{id}` - atualiza as informações do usuário com o id que foi passado
 - **GET USUARIOS POR CPF:** `/usuarios/por-cpf` - busca usuários pelo CPF, fornecendo o parâmetro `cpf`
-- **GET USUARIOS POR RG:** `/usuarios/por-rg` - busca usuários pelo RG, fornecendo o parâmetro `rg`
+- **GET USUARIOS POR RG:** `/usuarios/por-rg` - busca usuários pelo RG, fornecendo o parâmetro `rg`.
 
