@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "326299ea-fa39-4353-962f-d74f927e85f8",
+		"name": "Logradouros",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29771037"
+	},
+	"item": [
+		{
+			"name": "post logradouro 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Rua Garcia D'Ávila\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/bairros/1/logradouros",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bairros",
+						"1",
+						"logradouros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post logradouro 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Rua Visconde de Pirajá\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/bairros/1/logradouros",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bairros",
+						"1",
+						"logradouros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get logradouro por paginacao",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/logradouros?size=2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logradouros"
+					],
+					"query": [
+						{
+							"key": "size",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get logradouro por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/logradouros/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logradouros",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put logradouro",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Visconde de Pirajá\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/logradouros/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logradouros",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete logradouro",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/logradouros/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logradouros",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

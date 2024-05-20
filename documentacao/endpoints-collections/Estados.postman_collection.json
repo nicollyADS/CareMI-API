@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "32782ef2-6ddd-43d1-82e6-90e19d78ac3b",
+		"name": "Estados",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29771037"
+	},
+	"item": [
+		{
+			"name": "post estado 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"São Paulo\",\r\n  \"sigla\": \"SP\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/estados",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"estados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post estado 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Rio de Janeiro\",\r\n  \"sigla\": \"RR\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/estados",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"estados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get estado por paginacao",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/estados?size=2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"estados"
+					],
+					"query": [
+						{
+							"key": "size",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get estado por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/estados/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"estados",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put estado",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"São Paulo\",\r\n  \"sigla\": \"SP\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/estados/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"estados",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete estado",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/estados/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"estados",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

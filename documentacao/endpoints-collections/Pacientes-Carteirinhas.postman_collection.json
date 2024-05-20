@@ -1,0 +1,179 @@
+{
+	"info": {
+		"_postman_id": "3cb21282-7b7b-4c5e-b25c-0da7963f9943",
+		"name": "Pacientes-Carteirinhas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29771037"
+	},
+	"item": [
+		{
+			"name": "post paciente-carteirinha 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"João da Silva\",\r\n  \"peso\": 65,\r\n  \"altura\": 170,\r\n  \"grupoSanguineo\": \"AB+\",\r\n  \"sexoBiologico\": \"MASCULINO\",\r\n  \"idUsuario\": 1,\r\n  \"nomePaciente\": \"João da Silva\",\r\n  \"planoSaude\": \"Unimed\",\r\n  \"cns\": 1234567890,\r\n  \"empresa\": \"Empresa XYZ\",\r\n  \"carencia\": \"30 dias\",\r\n  \"acomodacao\": \"Apartamento\",\r\n  \"dataNascimento\": \"1990-05-15\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/pacientes",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pacientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post paciente-carteirinha 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Ana Silva\",\r\n  \"peso\": 65,\r\n  \"altura\": 170,\r\n  \"grupoSanguineo\": \"AB+\",\r\n  \"sexoBiologico\": \"FEMININO\",\r\n  \"idUsuario\": 3,\r\n  \"nomePaciente\": \"Ana Silva\",\r\n  \"planoSaude\": \"Unimed\",\r\n  \"cns\": 1234567890,\r\n  \"empresa\": \"Empresa XYZ\",\r\n  \"carencia\": \"30 dias\",\r\n  \"acomodacao\": \"Apartamento\",\r\n  \"dataNascimento\": \"1990-05-15\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/pacientes",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pacientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get paciente-carteirinha por paginacao",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/pacientes?size=3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pacientes"
+					],
+					"query": [
+						{
+							"key": "size",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get paciente-carteirinha por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/pacientes/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pacientes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put paciente-carteirinha",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Ana Silva\",\r\n  \"peso\": 55,\r\n  \"altura\": 170,\r\n  \"grupoSanguineo\": \"AB+\",\r\n  \"sexoBiologico\": \"FEMININO\",\r\n  \"idUsuario\": 3,\r\n  \"nomePaciente\": \"Ana Silva\",\r\n  \"planoSaude\": \"Unimed\",\r\n  \"cns\": 1234567890,\r\n  \"empresa\": \"Empresa XYZ\",\r\n  \"carencia\": \"30 dias\",\r\n  \"acomodacao\": \"Apartamento\",\r\n  \"dataNascimento\": \"1990-05-15\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/pacientes/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pacientes",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete paciente-carteirinha",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/pacientes/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pacientes",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get paciente por nome",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/pacientes/por-nome?nome=Jo",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pacientes",
+						"por-nome"
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": "Jo"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "603d1a42-897f-4c11-a28d-8a035fa8f236",
+		"name": "Bairros",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29771037"
+	},
+	"item": [
+		{
+			"name": "post bairro 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Ipanema\",\r\n    \"zona\": \"Sul\",\r\n    \"cep\": \"22410-000\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/cidades/1/bairros",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cidades",
+						"1",
+						"bairros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post bairro 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"nome\": \"Barra da Tijuca\",\r\n    \"zona\": \"Oeste\",\r\n    \"cep\": \"22793-000\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/cidades/1/bairros",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cidades",
+						"1",
+						"bairros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get bairro por paginacao",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/bairros?size=2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bairros"
+					],
+					"query": [
+						{
+							"key": "size",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get bairro por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/bairros/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bairros",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put bairro",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"nome\": \"Barra da Tijuca\",\r\n    \"zona\": \"Zona Oeste\",\r\n    \"cep\": \"22793-000\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/bairros/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bairros",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete bairro",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/bairros/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bairros",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

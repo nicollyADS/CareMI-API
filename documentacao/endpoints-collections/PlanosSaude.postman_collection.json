@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "bffde540-1450-4350-a558-7834b1e37e85",
+		"name": "PlanosSaude",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29771037"
+	},
+	"item": [
+		{
+			"name": "post plano saude 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"razaoSocial\": \"Hospital Beneficente\",\r\n  \"fantasia\": \"Saúde Total\",\r\n  \"cnpj\": 12345678901234,\r\n  \"contato\": \"João da Silva\",\r\n  \"telefone\": \"(11) 9876-5432\",\r\n  \"dataCadastro\": \"2023-12-31\",\r\n  \"ativo\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/planos-saude",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"planos-saude"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post plano saude 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"razaoSocial\": \"Clinica Bem-Estar\",\r\n  \"fantasia\": \"Viva Saúde\",\r\n  \"cnpj\": 98765432109876,\r\n  \"contato\": \"Maria Oliveira\",\r\n  \"telefone\": \"(21) 1234-5678\",\r\n  \"dataCadastro\": \"2024-01-15\",\r\n  \"ativo\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/planos-saude",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"planos-saude"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get plano saude por paginacao",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/planos-saude?size=2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"planos-saude"
+					],
+					"query": [
+						{
+							"key": "size",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get plano saude por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/planos-saude/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"planos-saude",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put plano saude",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"razaoSocial\": \"Clinica Bem-Estar\",\r\n  \"fantasia\": \"Viva Saúde\",\r\n  \"cnpj\": 98765432109876,\r\n  \"contato\": \"Maria Oliveira\",\r\n  \"telefone\": \"(21) 1234-5555\",\r\n  \"dataCadastro\": \"2024-01-15\",\r\n  \"ativo\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/planos-saude/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"planos-saude",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete plano saude",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/planos-saude/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"planos-saude",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

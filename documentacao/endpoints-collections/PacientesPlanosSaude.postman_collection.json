@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "021a2459-5b5c-4b4a-a87b-d127263932b1",
+		"name": "PacientesPlanosSaude",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29771037"
+	},
+	"item": [
+		{
+			"name": "post paciente plano saude 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"carteira\": 123456789,\r\n  \"dataInicio\": \"2024-05-01\",\r\n  \"dataFim\": \"2025-04-30\",\r\n  \"idPlanoSaude\": 1,\r\n  \"idPaciente\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/pacientes-planos-saude",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pacientes-planos-saude"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post paciente plano saude 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"carteira\": 987654321,\r\n  \"dataInicio\": \"2023-08-15\",\r\n  \"dataFim\": \"2024-08-14\",\r\n  \"idPlanoSaude\": 1,\r\n  \"idPaciente\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/pacientes-planos-saude",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pacientes-planos-saude"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get paciente plano saude por paginacao",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/pacientes-planos-saude?size=2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pacientes-planos-saude"
+					],
+					"query": [
+						{
+							"key": "size",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get paciente plano saude por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/pacientes-planos-saude/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pacientes-planos-saude",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put paciente plano saude",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"carteira\": 987654333,\r\n  \"dataInicio\": \"2023-08-15\",\r\n  \"dataFim\": \"2024-08-14\",\r\n  \"idPlanoSaude\": 1,\r\n  \"idPaciente\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/pacientes-planos-saude/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pacientes-planos-saude",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete paciente plano saude",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/pacientes-planos-saude/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pacientes-planos-saude",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

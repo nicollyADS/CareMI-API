@@ -1,0 +1,183 @@
+{
+	"info": {
+		"_postman_id": "f853461d-646f-4aee-bbbf-5b9d0bd11fbe",
+		"name": "Exames-ResultadoExames",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29771037"
+	},
+	"item": [
+		{
+			"name": "post exame 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"data\": \"2024-05-20\",\r\n  \"descricao\": \"Exame de sangue\",\r\n  \"descricaoExame\": \"Resultados do exame de sangue\",\r\n  \"observacao\": \"Paciente em jejum de 12 horas\",\r\n  \"resultado\": 1,\r\n  \"globulosVermelhos\": 5,\r\n  \"globulosBrancos\": 7,\r\n  \"plaquetas\": 300,\r\n  \"homoglobinaGlicada\": 6,\r\n  \"creatina\": 0.9,\r\n  \"colesterolTotal\": 200,\r\n  \"colesterolHDL\": 50,\r\n  \"colesterolLDL\": 120,\r\n  \"teglicerides\": 150,\r\n  \"hormonioTrioestimulanteTSH\": 2\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/atendimentos/1/exames",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"atendimentos",
+						"1",
+						"exames"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post exame 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"data\": \"2024-06-10\",\r\n  \"descricao\": \"Exame de urina\",\r\n  \"descricaoExame\": \"Resultados do exame de urina\",\r\n  \"observacao\": \"Amostra coletada pela manhã\",\r\n  \"resultado\": 1,\r\n  \"globulosVermelhos\": 4,\r\n  \"globulosBrancos\": 8,\r\n  \"plaquetas\": 320,\r\n  \"homoglobinaGlicada\": 5,\r\n  \"creatina\": 0.8,\r\n  \"colesterolTotal\": 190,\r\n  \"colesterolHDL\": 55,\r\n  \"colesterolLDL\": 115,\r\n  \"teglicerides\": 140,\r\n  \"hormonioTrioestimulanteTSH\": 2.5\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/atendimentos/1/exames",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"atendimentos",
+						"1",
+						"exames"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get exame por paginacao",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/exames?size=2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"exames"
+					],
+					"query": [
+						{
+							"key": "size",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get exame por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/exames/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"exames",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put exame",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"data\": \"2024-06-10\",\r\n  \"descricao\": \"Exame de urina\",\r\n  \"descricaoExame\": \"Resultados do exame de urina\",\r\n  \"observacao\": \"Amostra coletada pela tarde\",\r\n  \"resultado\": 1,\r\n  \"globulosVermelhos\": 4,\r\n  \"globulosBrancos\": 8,\r\n  \"plaquetas\": 320,\r\n  \"homoglobinaGlicada\": 5,\r\n  \"creatina\": 0.8,\r\n  \"colesterolTotal\": 190,\r\n  \"colesterolHDL\": 55,\r\n  \"colesterolLDL\": 115,\r\n  \"teglicerides\": 140,\r\n  \"hormonioTrioestimulanteTSH\": 2.5\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/exames/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"exames",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete exame",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/exames/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"exames",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get exames por data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/exames/por-data?data=2024-05-20",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"exames",
+						"por-data"
+					],
+					"query": [
+						{
+							"key": "data",
+							"value": "2024-05-20"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
