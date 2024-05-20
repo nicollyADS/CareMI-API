@@ -17,6 +17,7 @@ import br.com.mapped.CareMI.repository.PlanoSaudeRepository;
 import br.com.mapped.CareMI.repository.UsuarioRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -82,6 +83,13 @@ public class PacienteController {
         var paciente = pacienteRepository.getReferenceById(id);
         paciente.atualizarInformacoesPaciente(dto);
         return ResponseEntity.ok(new DetalhesPacienteDto(paciente));
+    }
+
+    //BUSCAR PACIENTE POR NOME
+    @GetMapping("por-nome")
+    public ResponseEntity<Page<DetalhesPacienteDto>> getNome(@RequestParam("nome") String nome, Pageable pageable){
+        var page = pacienteRepository.findByNome(nome, pageable).map(DetalhesPacienteDto::new);
+        return ResponseEntity.ok(page);
     }
 
 
