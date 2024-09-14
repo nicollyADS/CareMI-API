@@ -1,0 +1,65 @@
+{
+	"info": {
+		"_postman_id": "d8f8f643-f833-48a9-af17-533a4ed4d431",
+		"name": "Autenticacao",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29771037"
+	},
+	"item": [
+		{
+			"name": "criando usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Nicolly\",\r\n    \"dataNascimento\": \"2003-12-02\",\r\n    \"cpf\": \"12345678901\",\r\n    \"rg\": \"12345678\",\r\n    \"nacionalidade\": \"Brasileira\",\r\n    \"dataCadastro\": \"2024-09-13\",\r\n    \"estadoCivil\": \"SOLTEIRO\",\r\n    \"profissao\": \"Desenvolvedora\",\r\n    \"senha\": \"552579\",\r\n    \"ativo\": 1 \r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/usuarios/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuarios",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fazendo login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"cpf\":\"12345678902\",\r\n   \"senha\": \"552579\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
