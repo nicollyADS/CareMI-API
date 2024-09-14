@@ -6,8 +6,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.List;
 
 @Getter
 @Setter
@@ -16,7 +20,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name="t_usuario")
 @EntityListeners(AuditingEntityListener.class)
-public class Usuario {
+public class Usuario implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario")
     @SequenceGenerator(name = "usuario", sequenceName = "seq_mi_usuario", allocationSize = 1)
@@ -48,6 +52,9 @@ public class Usuario {
     @Column(name="dsProfissao", length = 100)
     private String profissao;
 
+    @Column(name="dsSenha", length = 100, nullable = false)
+    private String senha;
+
     @Column(name="fgAtivo", length = 1, nullable = false)
     private Integer ativo;
 
@@ -55,10 +62,6 @@ public class Usuario {
     //usuario enderecoPaciente - UM pra um
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
     private EnderecoPaciente enderecoPaciente;
-
-    //usuario login - UM pra um
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private Login login;
 
     //usuario paciente - UM pra um
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
@@ -74,15 +77,9 @@ public class Usuario {
         dataCadastro = usuarioDto.dataCadastro();
         estadoCivil = usuarioDto.estadoCivil();
         profissao = usuarioDto.profissao();
+        senha = usuarioDto.senha();
         ativo = usuarioDto.ativo();
 
-        //login
-        login = new Login(usuarioDto);
-        login.setUsuario(this);
-
-        //enderecoPaciente
-        enderecoPaciente = new EnderecoPaciente(usuarioDto);
-        enderecoPaciente.setUsuario(this);
     }
 
     public void atualizarInformacoesUsuario(AtualizacaoUsuarioDto dto) {
@@ -103,23 +100,44 @@ public class Usuario {
             estadoCivil = dto.estadoCivil();
         if (dto.profissao() != null)
             profissao = dto.profissao();
+        if(dto.senha() != null)
+            senha = dto.senha();
         if (dto.ativo() != null)
             ativo = dto.ativo();
+    }
 
-        //login
-        if (dto.numCpf() != null)
-            this.login.setNumCpf(dto.numCpf());
-        if (dto.senha() != null)
-            this.login.setSenha(dto.senha());
-        if (dto.flagAtivo() != null)
-            this.login.setFlagAtivo(dto.flagAtivo());
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of();
+    }
 
-        //enderecoPaciente
-        if (dto.numLogradouro() != null)
-            this.enderecoPaciente.setNumLogradouro(dto.numLogradouro());
-        if (dto.pontoReferencia() != null)
-            this.enderecoPaciente.setPontoReferencia(dto.pontoReferencia());
-        if (dto.complemento() != null)
-            this.enderecoPaciente.setComplemento(dto.complemento());
+    @Override
+    public String getPassword() {
+        return senha;
+    }
+
+    @Override
+    public String getUsername() {
+        return nome;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }

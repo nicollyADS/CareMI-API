@@ -6,12 +6,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.userdetails.UserDetails;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
-    //BUSCAR USUARIO POR CPF
-    @Query("FROM Usuario u WHERE u.cpf = :cpf")
-    Page<Usuario> findByCpf(@Param("cpf") String cpf, Pageable pageable);
+    //USER DETAILS
+    UserDetails findByCpf(String cpf);
 
     //BUSCAR USUARIO POR RG
     @Query("FROM Usuario u WHERE u.rg = :rg")

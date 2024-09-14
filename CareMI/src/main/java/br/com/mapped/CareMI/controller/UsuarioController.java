@@ -3,8 +3,6 @@ import br.com.mapped.CareMI.dto.UsuarioDto.AtualizacaoUsuarioDto;
 import br.com.mapped.CareMI.dto.UsuarioDto.CadastroUsuarioDto;
 import br.com.mapped.CareMI.dto.UsuarioDto.DetalhesUsuarioDto;
 import br.com.mapped.CareMI.model.Usuario;
-import br.com.mapped.CareMI.repository.CarteirinhaRepository;
-import br.com.mapped.CareMI.repository.LoginRepository;
 import br.com.mapped.CareMI.repository.LogradouroRepository;
 import br.com.mapped.CareMI.repository.UsuarioRepository;
 import jakarta.validation.Valid;
@@ -12,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -28,7 +27,7 @@ public class UsuarioController {
     private LogradouroRepository logradouroRepository;
 
     @Autowired
-    private LoginRepository loginRepository;
+    private PasswordEncoder passwordEncoder;
 
 
     //GET
@@ -47,15 +46,15 @@ public class UsuarioController {
     }
 
     //POST
-    @PostMapping
+    @PostMapping("register")
     @Transactional
-    public ResponseEntity<DetalhesUsuarioDto> cadastrar(@RequestBody @Valid CadastroUsuarioDto dto, UriComponentsBuilder builder) {
+    public ResponseEntity<DetalhesUsuarioDto> post(@RequestBody @Valid CadastroUsuarioDto dto,
+                                                   UriComponentsBuilder uri){
         var usuario = new Usuario(dto);
-        var logradouro = logradouroRepository.getReferenceById(dto.idLogradouro());
-        usuario.getEnderecoPaciente().setLogradouro(logradouro);
-        usuario = usuarioRepository.save(usuario);
-        var uri = builder.path("/usuarios/{id}").buildAndExpand(usuario.getIdUsuario()).toUri();
-        return ResponseEntity.created(uri).body(new DetalhesUsuarioDto(usuario));
+        usuario.setSenha(passwordEncoder.encode(dto.senha()));
+        usuarioRepository.save(usuario);
+        var uriBuilder = uri.path("usuarios/{id}").buildAndExpand(usuario.getIdUsuario()).toUri();
+        return ResponseEntity.created(uriBuilder).body(new DetalhesUsuarioDto(usuario));
     }
 
     //DELETE
@@ -76,13 +75,6 @@ public class UsuarioController {
         return ResponseEntity.ok(new DetalhesUsuarioDto(usuario));
     }
 
-
-    //BUSCAR USUARIO POR CPF
-    @GetMapping("por-cpf")
-    public ResponseEntity<Page<DetalhesUsuarioDto>> getCPF(@RequestParam("cpf") String cpf, Pageable pageable){
-        var page = usuarioRepository.findByCpf(cpf, pageable).map(DetalhesUsuarioDto::new);
-        return ResponseEntity.ok(page);
-    }
 
     //BUSCAR USUARIO POR RG
     @GetMapping("por-rg")
