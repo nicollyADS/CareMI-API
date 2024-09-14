@@ -66,6 +66,11 @@ Assista ao vídeo de apresentação da proposta tecnológica, público-alvo e pr
 - **GET ATENDIMENTOS POR MÉDICO:** `/atendimentos/por-medico` - lista os atendimentos filtrados por médico, fornecendo o parametro `id-medico`
 - **GET ATENDIMENTOS POR PACIENTE:** `/atendimentos/por-paciente` - lista os atendimentos filtrados por paciente, fornecendo o parametro `id-paciente`
 
+
+**Autenticacao**
+- **POST:** `/login` - gera um token quando o login é realizado 
+
+
 **Bairro**
 - **GET:** `/bairros` - lista todos os bairros
 - **GET BY ID:** `/bairros/{id}` - lista o bairro com o id que foi passado
@@ -87,6 +92,13 @@ Assista ao vídeo de apresentação da proposta tecnológica, público-alvo e pr
 - **GET BY ID:** `/enderecos-hospitais/{id}` - lista o endereço de hospital com o id que foi passado
 - **PUT:** `/enderecos-hospitais/{id}` - atualiza as informações do endereço de hospital com o id que foi passado
 - **DELETE:** `/enderecos-hospitais/{id}` - deleta um endereço de hospital
+
+**Endereco Hospital**
+- **GET:** `/enderecos-pacientes` - lista todos os endereços dos pacientes
+- **GET BY ID:** `/enderecos-pacientes/{id}` - lista o endereço do paciente com o id que foi passado
+- **POST:** `/enderecos-pacientes` - cria um endereco para o paciente
+- **PUT:** `/enderecos-pacientes/{id}` - atualiza as informações de endereço do paciente com o id que foi passado
+- **DELETE:** `/enderecos-pacientes/{id}` - deleta um endereço do paciente
 
 **Estado**
 - **GET:** `/estados` - lista todos os estados
@@ -143,7 +155,7 @@ Assista ao vídeo de apresentação da proposta tecnológica, público-alvo e pr
 **Usuários**
 - **GET:** `/usuarios` - lista todos os usuários
 - **GET BY ID:** `/usuarios/{id}` - lista o usuário com o id que foi passado
-- **POST:** `/usuarios` - cadastra um novo usuário
+- **POST:** `/usuarios/register` - cadastra um novo usuario
 - **DELETE:** `/usuarios/{id}` - deleta o usuário com o id que foi passado
 - **PUT:** `/usuarios/{id}` - atualiza as informações do usuário com o id que foi passado
 - **GET USUARIOS POR CPF:** `/usuarios/por-cpf` - busca usuários pelo CPF, fornecendo o parâmetro `cpf`
