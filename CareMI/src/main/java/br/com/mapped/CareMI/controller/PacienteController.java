@@ -1,4 +1,5 @@
 package br.com.mapped.CareMI.controller;
+
 import br.com.mapped.CareMI.dto.PacienteDto.AtualizacaoPacienteDto;
 import br.com.mapped.CareMI.dto.PacienteDto.CadastroPacienteDto;
 import br.com.mapped.CareMI.dto.PacienteDto.DetalhesPacienteDto;
@@ -15,7 +16,15 @@ import br.com.mapped.CareMI.repository.PacientePlanoSaudeRepository;
 import br.com.mapped.CareMI.repository.PacienteRepository;
 import br.com.mapped.CareMI.repository.PlanoSaudeRepository;
 import br.com.mapped.CareMI.repository.UsuarioRepository;
-import jakarta.validation.Valid;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,10 +32,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import jakarta.validation.Valid;
 import java.util.List;
 
 @RestController
 @RequestMapping("pacientes")
+@Tag(name = "Pacientes", description = "Operações para gerenciar pacientes")
 public class PacienteController {
     @Autowired
     private PacienteRepository pacienteRepository;
@@ -42,15 +54,25 @@ public class PacienteController {
 
     //GET
     @GetMapping
+    @Operation(summary = "Lista todos os pacientes", description = "Retorna uma lista paginada de todos os pacientes")
     public ResponseEntity<List<DetalhesPacienteDto>> get(Pageable pageable){
-        var paciente =  pacienteRepository.findAll(pageable)
+        var paciente = pacienteRepository.findAll(pageable)
                 .stream().map(DetalhesPacienteDto::new).toList();
         return ResponseEntity.ok(paciente);
     }
 
     //GET BY ID
     @GetMapping("{id}")
-    public ResponseEntity<DetalhesPacienteDto> get(@PathVariable("id")Long id){
+    @Operation(summary = "Obtém detalhes de um paciente pelo ID", description = "Retorna os detalhes de um paciente específico pelo ID")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Detalhes do paciente encontrados",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = DetalhesPacienteDto.class))),
+            @ApiResponse(responseCode = "404", description = "Paciente não encontrado")
+    })
+    @Parameters({
+            @Parameter(name = "id", description = "ID do paciente", required = true, in = ParameterIn.PATH)
+    })
+    public ResponseEntity<DetalhesPacienteDto> get(@PathVariable("id") Long id){
         var paciente = pacienteRepository.getReferenceById(id);
         return ResponseEntity.ok(new DetalhesPacienteDto(paciente));
     }
@@ -58,6 +80,12 @@ public class PacienteController {
     //POST
     @PostMapping
     @Transactional
+    @Operation(summary = "Cadastra um novo paciente", description = "Registra um novo paciente")
+    @ApiResponses({
+            @ApiResponse(responseCode = "201", description = "Paciente cadastrado com sucesso",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = DetalhesPacienteDto.class))),
+            @ApiResponse(responseCode = "400", description = "Dados inválidos fornecidos")
+    })
     public ResponseEntity<DetalhesPacienteDto> cadastrar(@RequestBody @Valid CadastroPacienteDto dto, UriComponentsBuilder builder) {
         var paciente = new Paciente(dto);
         var usuario = usuarioRepository.getReferenceById(dto.idUsuario());
@@ -70,7 +98,15 @@ public class PacienteController {
     //DELETE
     @DeleteMapping("{id}")
     @Transactional
-    public ResponseEntity<Void> delete(@PathVariable("id")Long id){
+    @Operation(summary = "Remove um paciente pelo ID", description = "Remove um paciente específico pelo ID")
+    @ApiResponses({
+            @ApiResponse(responseCode = "204", description = "Paciente removido com sucesso"),
+            @ApiResponse(responseCode = "404", description = "Paciente não encontrado")
+    })
+    @Parameters({
+            @Parameter(name = "id", description = "ID do paciente", required = true, in = ParameterIn.PATH)
+    })
+    public ResponseEntity<Void> delete(@PathVariable("id") Long id){
         pacienteRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
@@ -78,8 +114,17 @@ public class PacienteController {
     //PUT
     @PutMapping("{id}")
     @Transactional
-    public ResponseEntity<DetalhesPacienteDto> put(@PathVariable("id")Long id,
-                                                 @RequestBody @Valid AtualizacaoPacienteDto dto){
+    @Operation(summary = "Atualiza as informações de um paciente", description = "Atualiza as informações de um paciente específico")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Paciente atualizado com sucesso",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = DetalhesPacienteDto.class))),
+            @ApiResponse(responseCode = "404", description = "Paciente não encontrado")
+    })
+    @Parameters({
+            @Parameter(name = "id", description = "ID do paciente", required = true, in = ParameterIn.PATH)
+    })
+    public ResponseEntity<DetalhesPacienteDto> put(@PathVariable("id") Long id,
+                                                   @RequestBody @Valid AtualizacaoPacienteDto dto){
         var paciente = pacienteRepository.getReferenceById(id);
         paciente.atualizarInformacoesPaciente(dto);
         return ResponseEntity.ok(new DetalhesPacienteDto(paciente));
@@ -87,11 +132,19 @@ public class PacienteController {
 
     //BUSCAR PACIENTE POR NOME
     @GetMapping("por-nome")
+    @Operation(summary = "Busca pacientes pelo nome", description = "Retorna uma lista paginada de pacientes que correspondem ao nome fornecido")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Pacientes encontrados",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = DetalhesPacienteDto.class))),
+            @ApiResponse(responseCode = "400", description = "Parâmetro de nome inválido")
+    })
+    @Parameters({
+            @Parameter(name = "nome", description = "Nome do paciente a ser pesquisado", required = true, in = ParameterIn.QUERY),
+            @Parameter(name = "page", description = "Número da página", in = ParameterIn.QUERY),
+            @Parameter(name = "size", description = "Número de itens por página", in = ParameterIn.QUERY)
+    })
     public ResponseEntity<Page<DetalhesPacienteDto>> getNome(@RequestParam("nome") String nome, Pageable pageable){
         var page = pacienteRepository.findByNome(nome, pageable).map(DetalhesPacienteDto::new);
         return ResponseEntity.ok(page);
     }
-
-
-
 }
